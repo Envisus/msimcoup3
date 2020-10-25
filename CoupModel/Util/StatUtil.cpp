@@ -2,14 +2,14 @@
 #include "StatUtil.h"
 #include <sys/stat.h>
 
-#include "../codecogs/stats/dists/continuous/StdNormal/cdf_inv.h"
-#include "../codecogs/stats/dists/continuous/Normal/cdf_inv.h"
-#include "../codecogs/Array/heap_sort.h"
-#include "../codecogs/stats/moments/correlation.h"
-#include "../codecogs/stats/moments/covariance.h"
-#include "../codecogs/computing/array/matrix.h"
-#include "../codecogs/maths/approximation/regression/discrete.h"
-#include "../codecogs/maths/approximation/regression/linear.h"
+#include "codecogs/stats/dists/continuous/StdNormal/cdf_inv.h"
+#include "codecogs/stats/dists/continuous/Normal/cdf_inv.h"
+#include "codecogs/Array/heap_sort.h"
+#include "codecogs/stats/moments/correlation.h"
+#include "codecogs/stats/moments/covariance.h"
+#include "codecogs/computing/array/matrix.h"
+#include "codecogs/maths/approximation/regression/discrete.h"
+#include "codecogs/maths/approximation/regression/linear.h"
 
 
 
@@ -184,7 +184,7 @@ double StatUtil::DistanceFunc(double lat1,double lat2, double long1, double long
 
         double aHarv= pow(sin(dLat/2.0),2.0)+cos(dlat1)*cos(dlat2)*pow(sin(dLong/2),2);
         double cHarv=2*atan2(sqrt(aHarv),sqrt(1.0-aHarv));
-        //earth"s radius from wikipedia varies between 6,356.750 km — 6,378.135 km (˜3,949.901 — 3,963.189 miles)
+        //earth"s radius from wikipedia varies between 6,356.750 km ï¿½ 6,378.135 km (ï¿½3,949.901 ï¿½ 3,963.189 miles)
         //The IUGG value for the equatorial radius of the Earth is 6378.137 km (3963.19 mile)
         const double earth=6378.137;  //in kilometers to get distances in km
         double distance=earth*cHarv;
