@@ -5,10 +5,11 @@ project(msimcoup)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_EXE_LINKER_FLAGS -pthread)
 add_compile_definitions(COUPSTD)
-add_compile_definitions(MS_CODE)
+#add_compile_definitions(MS_CODE) for windows
 add_compile_definitions(STD)
 add_compile_definitions(HAVE_EXPM1)
-include_directories(C:/Dev/boost_1_55_0b1)
+#include_directories(C:/Dev/boost_1_55_0b1) for windows
+include_directories(/usr/include/boost)
 include_directories(CoupModel/DB)
 include_directories(CoupModel/mcmc)
 include_directories(CoupModel/Model)
