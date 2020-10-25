@@ -541,7 +541,7 @@ bool Sim::MakeMultiRun() {
 	MR_Storage_Reset();
 	MR_Storage_Open();
 #ifdef COUPSTD
-	cout << "Simulaton completed " + m_DocFileName+'\n';
+	cout << "Simulaton completed " + m_DocFileName+"\n";
 #endif
 	if (IsBayesianCalibration()) {
 		UpdateCoVar();
@@ -1326,7 +1326,7 @@ bool Sim::OnCommandLineChangeParameters()
 
 	if(!cmdLineParFile.is_open()) {
 		#ifndef COUPSTD
-		MessageBox(nullptr,"For some reason	the	file specified couldn´t	be opened.","File Open Error",MB_OK|MB_ICONEXCLAMATION);
+		MessageBox(nullptr,"For some reason	the	file specified couldnï¿½t	be opened.","File Open Error",MB_OK|MB_ICONEXCLAMATION);
 		#endif
 	}
 	else
@@ -1373,7 +1373,7 @@ bool Sim::OnCommandLineChangeParameters()
 
 			Sw=(SimB*)GetPtr(typ,	grp, Parname);
 				
-			//If the parameter doesn´t exist then give a message about that, else
+			//If the parameter doesnï¿½t exist then give a message about that, else
 			//add the parameter
 			if (Sw==nullptr)
 			{

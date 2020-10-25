@@ -291,7 +291,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 	auto WriteItem = [&](string item, string &value) {
 		if (Export) {
 			line = item + ';';
-			line += value + '\n';
+			line += value + "\n";
 			fileout.write((char*)&line[0], line.size());
 		}
 		else {
@@ -306,7 +306,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 	auto WriteFloatItem = [&](string item, float &value) {
 		if (Export) {
 			line = item + ';';
-			line += FUtil::STD_FtoAscii(value) + '\n';
+			line += FUtil::STD_FtoAscii(value) + "\n";
 			fileout.write((char*)&line[0], line.size());
 		}
 		else {
@@ -319,13 +319,13 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 	auto WriteKeyItem = [&](size_t key) {
 		line = "Prof no:/Rep No:;";
 		line += FUtil::STD_ItoAscii(key / 100) + ';';
-		line += FUtil::STD_ItoAscii(key % 100) + '\n';
+		line += FUtil::STD_ItoAscii(key % 100) + "\n";
 		fileout.write((char*)&line[0], line.size());
 	};
 	auto WriteIntItem = [&](string item, size_t &value) {
 		if (Export) {
 			line = item + ';';
-			line += FUtil::STD_ItoAscii(int(value)) + '\n';
+			line += FUtil::STD_ItoAscii(int(value)) + "\n";
 			fileout.write((char*)&line[0], line.size());
 		}
 		else {
@@ -355,7 +355,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 			line += FUtil::STD_FtoAscii(pfcoef.TotConductivity) + ';';
 			line += FUtil::STD_FtoAscii(pfcoef.Mualem_n) + ';';
 			line = line.substr(0, line.size() - 1);
-			line += '\n';
+			line += "\n";
 			fileout.write((char*)&line[0], line.size());
 		}
 		else {
@@ -397,7 +397,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 	auto WritePFCOEFHeading = [&]() {
 		if (Export) {
 			line = "Upper Depth; Lower Depth; Lambda;Air Entry;Saturation;Wilting Point;Residual; LowerBoundary; UpperBoundary; Gen M; Gen n; Gen Alfa; Mat Conductivity; Tot Conductivity;Mualem n";
-			line += '\n';
+			line += "\n";
 			fileout.write((char*)&line[0], line.size());
 		}
 		else {
@@ -409,7 +409,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 	auto WriteTextureHeading = [&]() {
 		if (Export) {
 			line = "Upper Depth; Lower Depth;<0.002;0.002-0.006;0.006-0.02;0.02-0.06;0.06-0.2;0.2-0.6;0.6-2.0; Org";
-			line += '\n';
+			line += "\n";
 			fileout.write((char*)&line[0], line.size());
 		}
 		else {
@@ -419,13 +419,13 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 	};
 	auto WritePressureHeading = [&](vector<float> &Pressure) {
 		if (Export) {
-			line = "Number of Measured Water Retention Points;" + FUtil::STD_ItoAscii(Pressure.size()) + '\n';
+			line = "Number of Measured Water Retention Points;" + FUtil::STD_ItoAscii(Pressure.size()) + "\n";
 			line += "Upper Depth; Lower Depth;";
 			for (size_t i = 0; i < Pressure.size(); i++) {
 				line += FUtil::STD_FtoAscii(Pressure[i]) + ";";
 			}
 			line = line.substr(0, line.size() - 1);
-			line += '\n';
+			line += "\n";
 			fileout.write((char*)&line[0], line.size());
 		}
 		else {
@@ -466,7 +466,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 				line += FUtil::STD_FtoAscii(floatv[i]) + ';';
 			}
 			line = line.substr(0, line.size() - 1);
-			line += '\n';
+			line += "\n";
 			fileout.write((char*)&line[0], line.size());
 		}
 		else {
@@ -490,7 +490,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 			string add;
 			for (size_t i = 0; i < numcomline; i++) {
 				WriteItem("Comments(" + FUtil::STD_ItoAscii(i + 1) + ")", add);
-				str += add + '\n';
+				str += add + "\n";
 			}
 			str = str.substr(0, str.size() - 1);
 			SetComments(str);

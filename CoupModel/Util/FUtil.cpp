@@ -98,12 +98,12 @@ FUtil::~FUtil(void)
 		 filestream->open(testname, ios::out);
 		 if (!filestream->is_open()) {
 #ifndef COUPSTD
-			 TRACE("Can't Open file %s´\n", filename);
+			 TRACE("Can't Open file %sï¿½\n", filename);
 			 //Display error message
 			 string str;
 			 str = "For some reason the file (";
 			 str += testname;
-			 str += ") specified couldn´t be opened.";
+			 str += ") specified couldnï¿½t be opened.";
 			 //	 MFC_Util::MessageBox(str, "File Open Error", MB_OK | MB_ICONEXCLAMATION);
 #endif		
 			 //m_IsMissing=true;	
@@ -134,12 +134,12 @@ FUtil::~FUtil(void)
 		 filestream->open(testname, ios::in | ios::binary);
 		 if (!filestream->is_open()) {
 #ifndef COUPSTD
-			 TRACE("Can't Open file %s´\n", filename);
+			 TRACE("Can't Open file %sï¿½\n", filename);
 			 //Display error message
 			 string str;
 			 str = "For some reason the file (";
 			 str += testname;
-			 str += ") specified couldn´t be opened.";
+			 str += ") specified couldnï¿½t be opened.";
 		//	 MFC_Util::MessageBox(str, "File Open Error", MB_OK | MB_ICONEXCLAMATION);
 #endif		
 			 //m_IsMissing=true;	
@@ -168,7 +168,7 @@ FUtil::~FUtil(void)
 #ifndef COUPSTD 
 	 if (nbyte == std::streamsize(0)) {
 
-		 TRACE("Can't Open file %s´\n", filename);
+		 TRACE("Can't Open file %sï¿½\n", filename);
 		 //Display error message
 		 string str;
 		 str = "For some reason the file (";

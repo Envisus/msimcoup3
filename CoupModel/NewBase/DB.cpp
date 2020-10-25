@@ -84,7 +84,7 @@ bool DB::Read_DB_DocFile(string file, bool ApplyToCurrentSimFile, bool ExportToC
 				line = "Switches,";
 				line += pSW->GetGroup() + ",";
 				line += pSW->GetName() + ",";
-				line += pSW->GetOption(pSW->GetDBIntValue()) + '\n';
+				line += pSW->GetOption(pSW->GetDBIntValue()) + "\n";
 				ExportFile.write((char*)&line[0], line.size());
 			}
 		}
@@ -94,7 +94,7 @@ bool DB::Read_DB_DocFile(string file, bool ApplyToCurrentSimFile, bool ExportToC
 				line = "Parameters,";
 				line += pPs->GetGroup() + ",";
 				line += pPs->GetName() + ",";
-				line += FUtil::STD_DtoAscii(pPs->GetValue()) + '\n';
+				line += FUtil::STD_DtoAscii(pPs->GetValue()) + "\n";
 				ExportFile.write((char*)&line[0], line.size());
 			}
 
@@ -106,15 +106,15 @@ bool DB::Read_DB_DocFile(string file, bool ApplyToCurrentSimFile, bool ExportToC
 				line = "Tables,";
 				line += pTab->GetGroup() + ",";
 				line += pTab->GetName() + ",";
-				line += FUtil::STD_ItoAscii(pTab->GetDB_Row()) + '\n';
+				line += FUtil::STD_ItoAscii(pTab->GetDB_Row()) + "\n";
 				ExportFile.write((char*)&line[0], line.size());
 
 				line = "NumberofCol,";
-				line+=FUtil::STD_ItoAscii(pTab->GetNumOfCol()) + '\n';
+				line+=FUtil::STD_ItoAscii(pTab->GetNumOfCol()) + "\n";
 				ExportFile.write((char*)&line[0], line.size());
 				for (size_t nCol = 0; nCol < pTab->GetNumOfCol(); nCol++) {				
 					line = "Title:,";
-					line += pTab->GetTitle(nCol)+'\n';
+					line += pTab->GetTitle(nCol)+"\n";
 					ExportFile.write((char*)&line[0], line.size());
 				}
 
@@ -141,7 +141,7 @@ bool DB::Read_DB_DocFile(string file, bool ApplyToCurrentSimFile, bool ExportToC
 				line = "Files,";
 				line += pF->GetGroup() + ",";
 				line += pF->GetName() + ",";
-				line += pF->GetDBStrValue() + '\n';
+				line += pF->GetDBStrValue() + "\n";
 				ExportFile.write((char*)&line[0], line.size());
 			}
 
@@ -198,7 +198,7 @@ bool DB::Read_DB_DocFile(string file, bool ApplyToCurrentSimFile, bool ExportToC
 		ExportFile.write((char*)&line[0], line.size());
 		for (size_t i = 0; i < newlines.size(); i++) {
 			line = "Details (" + FUtil::STD_ItoAscii(i + 1) + "),";
-			line += newlines[i] + '\n';
+			line += newlines[i] + "\n";
 			ExportFile.write((char*)&line[0], line.size());
 		}
 #endif
@@ -252,7 +252,7 @@ bool DB::Read_DB_DocFile(string file, bool ApplyToCurrentSimFile, bool ExportToC
 				if (ExportToCSV) WriteToFile(3);
 			}
 			rString(&str);
-			line = str + '\n';
+			line = str + "\n";
 			if(ExportToCSV) ExportFile.write((char*)&line[0], line.size());
 			good=m_DocFileIn.good();
 		}
@@ -2112,7 +2112,7 @@ string DB::CreateFlagString(SimB* currentParameter, bool GDType, int FlagValue)
 		{
 			//Get the state of the i:th flag
 			((G*)currentParameter)->GetFlag(i,&selected);
-			//If this flag is selected and updateSequenceStart isn´t set then
+			//If this flag is selected and updateSequenceStart isnï¿½t set then
 			if (selected==FlagValue && (updateSequenceStart==-1))
 			{
 				//If this is the last item then it should be added to outString
@@ -2123,7 +2123,7 @@ string DB::CreateFlagString(SimB* currentParameter, bool GDType, int FlagValue)
 			}
 			else
 			{
-				//else if it isn´t selected and updateSequenceStart is set
+				//else if it isnï¿½t selected and updateSequenceStart is set
 				//or this is the last item in the flaglist then update outString
 				if (((selected!=FlagValue)&&(updateSequenceStart!=-1))||(((i==(((X*)currentParameter)->GetNumberOfFlags()-1))&&selected==FlagValue)))
 				{
@@ -2167,7 +2167,7 @@ string DB::CreateFlagString(SimB* currentParameter, bool GDType, int FlagValue)
 		{
 			//Get the state of the i:th flag
 			((X*)currentParameter)->GetFlag(i,&selected);
-			//If this flag is selected and updateSequenceStart isn´t set then
+			//If this flag is selected and updateSequenceStart isnï¿½t set then
 			if (selected==FlagValue && (updateSequenceStart==-1))
 			{
 				//If this is the last item then it should be added to outString
@@ -2178,7 +2178,7 @@ string DB::CreateFlagString(SimB* currentParameter, bool GDType, int FlagValue)
 			}
 			else
 			{
-				//else if it isn´t selected and updateSequenceStart is set
+				//else if it isnï¿½t selected and updateSequenceStart is set
 				//or this is the last item in the flaglist then update outString
 				if (((!selected)&&(updateSequenceStart!=-1))||(((i==(((X*)currentParameter)->GetNumberOfFlags()-1))&&selected==FlagValue)))
 				{

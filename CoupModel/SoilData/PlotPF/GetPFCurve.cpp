@@ -1,5 +1,3 @@
-#define STD
-#define COUPSTD
 #include "../../std.h"
 #include "GetPFCurve.h"
 #include "../../Util/FUtil.h"
@@ -638,7 +636,7 @@ vector<string> GetPFCurve::GetCommentsLines() {
 	vector<string> outcom;
 	string line = GetComments();
 	while (line.size() > 0) {
-		auto pos = line.find('\n');
+		auto pos = line.find("\n");
 		if (pos != string::npos) {
 			outcom.push_back(line.substr(0, pos));
 			line = line.substr(pos + 2);
@@ -674,16 +672,16 @@ string GetPFCurve::GetComments()
 		comfile.read((char*)&buf,totsize);
 
 		for(int i=0;i<totsize;i++){
-			if(buf[i]==0x8F) buf[i]= 0xE5; // å
-			else if(buf[i]==0x84)	buf[i]=0xE4;		//ä
-			else if(buf[i]==0x94)	buf[i]=0xF6;		//ö
-			else if(buf[i]==0xF8)	buf[i]=0xC5;		//Å
-			else if(buf[i]==0xE8)	buf[i]=0xC4;		//Ä
-			else if(buf[i]==0x99)	buf[i]=0xD6;		//Ö
+			if(buf[i]==0x8F) buf[i]= 0xE5; // ï¿½
+			else if(buf[i]==0x84)	buf[i]=0xE4;		//ï¿½
+			else if(buf[i]==0x94)	buf[i]=0xF6;		//ï¿½
+			else if(buf[i]==0xF8)	buf[i]=0xC5;		//ï¿½
+			else if(buf[i]==0xE8)	buf[i]=0xC4;		//ï¿½
+			else if(buf[i]==0x99)	buf[i]=0xD6;		//ï¿½
 			if(buf[i]>=32&&buf[i]!=0xcc)
 				m_comdetails+=buf[i];
 			else if(buf[i]=='\n') {
-				m_comdetails+='\n';m_comdetails+='\r';
+				m_comdetails+="\n";m_comdetails+='\r';
 			}
 			else if(buf[i]=='\n'||buf[i]=='\r'||buf[i]=='\t')
 				m_comdetails+=buf[i];

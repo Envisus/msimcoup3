@@ -374,7 +374,7 @@ CDB* GetDB::CreateNewDBObject_FromCSVFile(string FileName)
 			for (size_t l = 0; l < NumOfDetails; l++) {
 				getline(stream, line);
 				string value = line.substr(line.find(delim) + 1);
-				header.Details += value+'\n';
+				header.Details += value+"\n";
 			}
 			if (SetHeader(pCDB->Get_DB_Index(), GetCurrentKeyIndex(), header)) {
 				headnew.ModifiedDate = FUtil::GetCurrentDateTime();

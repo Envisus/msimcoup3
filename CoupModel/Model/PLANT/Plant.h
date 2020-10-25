@@ -1,7 +1,5 @@
 #pragma once
 #include "../SOIL/Soil_Frost.h"
-#include "./Plant_Functions.h"
-
 #include "../SimModule.h"
 
 class Irrigation;

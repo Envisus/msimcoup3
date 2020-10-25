@@ -259,7 +259,7 @@ float value1, value2;
 					filename = FileDlg.filename;
 					cout << message;
 #else 
-					cout << message+'\n';
+					cout << message+"\n";
 					cin >> filename;
 
 #endif
@@ -281,13 +281,13 @@ float value1, value2;
 	if (header.RecordPos == string::npos) {
 #ifdef COUPSTD
 		cout << "Problems when reading MASCUR soil file \n soil key:";
-			cout << FUtil::STD_ItoAscii(index)+ '\n';
+			cout << FUtil::STD_ItoAscii(index)+ "\n";
 			while (header.RecordPos == string::npos) {
 				header = pGetSoil->GetSoilHeaderByKey(index);
 
 
 				cout << "Problems when reading MASCUR soil file \n soil key:";
-				cout << FUtil::STD_ItoAscii(index) + '\n';
+				cout << FUtil::STD_ItoAscii(index) + "\n";
 			}
 
 
@@ -319,7 +319,7 @@ float value1, value2;
 	if (header.NumLayers <= 0) {
 #ifdef COUPSTD
 		cout << "Problems when reading MASCUR soil file \n soil key:";
-		cout << FUtil::STD_ItoAscii(index) + '\n';
+		cout << FUtil::STD_ItoAscii(index) + "\n";
 #endif
 		return;
 }

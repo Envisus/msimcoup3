@@ -184,7 +184,7 @@ bool Simulator::Start(bool MultiFlag, bool First)
 			p_mainframe->UpdatePaneText(0, "Size too big for for output file");
 #else
 			string str = "Size too big for output file";
-			cout << str+'\n';
+			cout << str+"\n";
 #endif
 			return false;
 
@@ -201,7 +201,7 @@ bool Simulator::Start(bool MultiFlag, bool First)
 			p_mainframe->UpdatePaneText(0, "Size too big for for output file");
 #else
 			string str = "Size too big for output file";
-			cout << str + '\n';
+			cout << str + "\n";
 #endif
 
 
@@ -672,9 +672,9 @@ bool Simulator::Store_Write(bool MultiFlag, bool Final)
 			m_pSim->m_PG_MultiOutputFile.CloseFile();
 #ifdef COUPSTD
 			if(goodfile)
-				cout << "Completed writing to Multi PG OutFile: " + m_pSim->m_PG_MultiOutputFile.GetFileName() +'\n';
+				cout << "Completed writing to Multi PG OutFile: " + m_pSim->m_PG_MultiOutputFile.GetFileName() +"\n";
 			else
-				cout << "Error when writing to Multi PG OutFile: " + m_pSim->m_PG_MultiOutputFile.GetFileName() + '\n';
+				cout << "Error when writing to Multi PG OutFile: " + m_pSim->m_PG_MultiOutputFile.GetFileName() + "\n";
 
 #endif
 
@@ -1288,10 +1288,7 @@ bool Simulator::Valid_Evaluation(bool MultiFlag, bool Final) {
 						Residual[ii]=MISSING;
 					}
 				}
-				if(m_ValPGFile[i].pRes!=nullptr) {
-					if (m_ValPGFile[i].pRes->AddResiduals(&Residual[0]));
-							
-				}
+				if(m_ValPGFile[i].pRes!=nullptr) m_ValPGFile[i].pRes->AddResiduals(&Residual[0]);
 				m_pSim->m_Val_Array[LL].LogLi=m_StructureModel.m_Structure.SumLikelihood(LL, &sim, &obs);
 
 				if(sim.size()>0) 
