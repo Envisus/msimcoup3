@@ -999,13 +999,13 @@ Density::ddirch(const std::vector<double>& p, const std::vector<double>& a,
   int nElem = p.size();
   if (include_const) {
     double sum = 0.0;
-    for (unsigned k = 0; k < nElem; k++) {
+    for (int k = 0; k < nElem; k++) {
       sum += a[k];
       l -= gamln(a[k]);
     }
     l += gamln(sum);
   }
-  for (unsigned k = 0; (k < nElem) && (l > Util::log_dbl_min); k++) {
+  for (int k = 0; (k < nElem) && (l > Util::log_dbl_min); k++) {
     l += (a[k] - 1.0) * log(p[k]);
   }
   return ((give_log) ? l : exp(l));
