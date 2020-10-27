@@ -1,7 +1,6 @@
 // MSimCoup2.cpp : Defines the entry point for the console application.
 //
 
-//#include ".\stdafx.h"
 
 #include "../CoupModel/NewBase/Doc.h"
 #include "../CoupModel/Util/FUtil.h"
@@ -85,7 +84,7 @@ bool MakeMulti(size_t i, Doc *pDoc) {
 				std::cout << "\n";
 				std::cout << "Document :" + pDoc->GetCurrentSimFile() + " can make Multi or Single Runs.\nDo you want Multi Runs (Y/N) ?";
 				std::cin >> str;
-				if ((str.find("Y") || str.find('y')) != string::npos) out = true;
+				if ((str.find("Y") || str.find('y')) ) out = true;
 				pDoc->SetMultiSimulation();
 			}
 		}
@@ -164,20 +163,17 @@ int main(int argc, char* argv[])
 #else
     nproc = std::thread::hardware_concurrency();
 #endif
-	
+
+
 	string filename;
     string str;
     vector<string> input_flag;
-    for(size_t iarg=1; iarg<argc; iarg++) {
-		char dest[256];
-		int koll=sprintf(dest, "%s", argv[iarg]);
+    for(int iarg=1; iarg<argc; iarg++) {
         string out;
         size_t i=0;
         str.clear();
-		while (dest[i] != NULL) {
-			str += char(dest[i]);
-			i++;
-		}
+        str.assign(argv[iarg]);
+
 		while (str.size() > 0)
             switch (str[1]) {
                 case 't':
@@ -231,7 +227,7 @@ int main(int argc, char* argv[])
                     break;
             }
 	}
-	 if(argc<=1) {
+	if(argc<=1) {
 		char *buf;
 #ifdef MS_CODE
 		buf = _getcwd(NULL, 0);

@@ -76,7 +76,6 @@ Real	Ratio_l1, Ratio_l2, Ratio_hum*/
 //	Flows from Surface Litter to uppermost soil compartments
 	bool OK;
 	double Ratio_L1, Ratio_L2, Ratio_Hum;
-	size_t Num;
 	Do_Cultivating=false;
 	if(int(m_pModelInfo->JDayNum)>0&&(int(m_pModelInfo->JDayNum)==int(SurfaceCultDay)||int(m_pModelInfo->JDayNum)==int(PloughingDay))) {
 

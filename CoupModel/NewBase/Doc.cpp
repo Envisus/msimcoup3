@@ -97,7 +97,6 @@ void Doc::SetOutputValidBinFileMissing()
 int Doc::Get_TotalNumResidualTimeRecords()
 {
 	int num;
-	CPG *pPG1;
 	string name;
 	num=0;
 #ifndef COUPSTD
@@ -123,8 +122,8 @@ CResiduals* Doc::GetResidualPointer(int ifile, int addedfiles)
 {
 	if(!MR_XBin_IsOpen(ifile, addedfiles))
 		return nullptr;
-	else if (ifile <= m_ResidualFileVector.size()) {
-		if (addedfiles < m_ResidualFileVector[ifile - 1].size())
+	else if (ifile <= int(m_ResidualFileVector.size())) {
+		if (addedfiles < int(m_ResidualFileVector[ifile - 1].size()))
 			return m_ResidualFileVector[ifile - 1][addedfiles];
 		else
 			return nullptr;
@@ -296,9 +295,6 @@ bool Doc::OpenSimDocument(long RunNo, bool NoMulti)
 	string pzPathName=GetCurrentSimFile().c_str();
 	string Num;
 	string newPathName ;
-	bool FirstTry, SecondTry;
-	long PreviousRunNo;
-
 	int iposext=pzPathName.find(".Sim");
 	Num=FUtil::ItoNumAscii(RunNo);
 	//Num.Format(%05u,RunNo);

@@ -299,17 +299,6 @@ bool Func::MakeOperation() {
 		return ((Soil_Drainage_Functions*)m_Class)->SetDrainageFunctors();
 
 	}
-
-	
-	switch(GetGroupNo()) {
-
-		//case 4:	return ((Profile_Functions*)m_Class)->GetFunctionValue(m_Opt);
-		//case 5:	return ((Hydraulic_Functions*)m_Class)->GetFunctionValue(m_Opt);
-	//	case 6:	return ((Thermal_Functions*)m_Class)->GetFunctionValue(m_Opt);
-	//	case 12: return ((Radiation_Functions*)m_Class)->GetFunctionValue(m_Opt);
-		//case 25: return ((NC_Organic_Functions*)m_Class)->GetFunctionValue(m_Opt);
-
-	}
 	return false;
 }
 double Func::GetValue( double x1, bool check) {
@@ -328,79 +317,21 @@ double Func::GetValue( double x1, bool check) {
 
 	}
 
-	if(m_FuncType>=100)
-	//	return ((SimModule*)m_Class)->GetPhysFunctionValue(m_Opt, x1);
-	switch(GetGroupNo()) {
-	//case 5:	return ((Hydraulic_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-	//case 6:	return ((Thermal_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-	//case 7: return ((Meteorological_Data_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-//	case 12: return ((Radiation_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-//	case 9: return ((Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-//	case 10: return ((Interception_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-//	case 11: return ((Potential_Transpiration_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-	//case 13: return ((SoilEvaporation_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-	//case 14: return ((SnowPack_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-//	case 15: return ((Soil_Frost_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-//	case 19: return ((Surface_Water_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-//	case 20: return ((WaterUptake_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-	//case 21: return ((Soil_Drainage_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, check);
-	//case 24: return ((NC_Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, check);
-	//case 25: return ((NC_Organic_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-//	case 28: return ((AbioticResponses_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-	//case 32: return ((NC_GasFlux_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-
-
-	}
 	return MISSING;
 }
 
 double Func::GetValue( double x1, double x2) {
-//	if(m_FuncType>=100)
-//		return ((SimModule*)m_Class)->GetPhysFunctionValue(m_Opt, x1,x2);
-	switch(GetGroupNo()) {
-		//case 7: return ((Meteorological_Data_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2);
-//		case 9: return ((Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2);
-//		case 10: return ((Interception_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2);
-		//case 12: return ((Radiation_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2);
-		//case 13: return ((SoilEvaporation_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2);
-		//case 14: return ((SnowPack_Functions*)m_Class)->GetFunctionValue(m_Opt, x1);
-	//	case 20: return ((WaterUptake_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2);
-//		case 24: return ((NC_Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2);
-	//	case 32: return ((NC_GasFlux_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2);
 
-	}
 	return MISSING;
 }
 double Func::GetValue( double x1, double x2, double x3) {
 
-//	if(m_FuncType>=100)
-//		return ((SimModule*)m_Class)->GetPhysFunctionValue(m_Opt, x1,x2,x3);
-	switch(GetGroupNo()) {
-	//	case 6:	return ((Thermal_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2, x3);
-//		case 9: return ((Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, x1,x2, x3);
-	//	case 10: return ((Interception_Functions*)m_Class)->GetFunctionValue(m_Opt, x1,x2,x3);
-	//	case 12: return ((Radiation_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2, x3);
-	//	case 13: return ((SoilEvaporation_Functions*)m_Class)->GetFunctionValue(m_Opt, x1,x2,x3);
-
-
-	}
 	return MISSING;
 }
 double Func::GetValue(double x1, double x2, double x3, double x4) {
-//	if(m_FuncType>=100)
-//		return ((SimModule*)m_Class)->GetPhysFunctionValue(m_Opt, x1,x2,x3, x4);
-	switch(GetGroupNo()) {
-//		case 10: return ((Interception_Functions*)m_Class)->GetFunctionValue(m_Opt, x1,x2,x3, x4);
-//		case 13: return ((SoilEvaporation_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2, x3, x4);
-	//	case 20: return ((WaterUptake_Functions*)m_Class)->GetFunctionValue(m_Opt, x1, x2, x3, x4);
-	}
 	return MISSING;
 }
 double Func::GetValue(size_t index) {
-	switch(GetGroupNo()) {
-	//case 7: return ((Meteorological_Data_Functions*)m_Class)->GetFunctionValue(m_Opt, index);
-	//case 14: return ((SnowPack_Functions*)m_Class)->GetFunctionValue(m_Opt, index);
-	}
 	return MISSING;
 }
 
@@ -418,16 +349,7 @@ double Func::GetValue(size_t index, double x) {
 
 
 	}
-	switch(GetGroupNo()) {
-//	case 9:	return ((Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x);
-//	case 10: return ((Interception_Functions*)m_Class)->GetFunctionValue(m_Opt,index, x);
-//	case 11: return ((Potential_Transpiration_Functions*)m_Class)->GetFunctionValue(m_Opt,index, x);
-//	case 12: return ((Radiation_Functions*)m_Class)->GetFunctionValue(m_Opt, index,x);
-	//case 14: return ((SnowPack_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x);
-//	case 20: return ((WaterUptake_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x);
-//	case 24: return ((NC_Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x);
-	//case 28: return ((AbioticResponses_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x);
-	}
+
 	return MISSING;
 }
 double Func::GetValue(size_t index, double x1, double x2) {
@@ -445,33 +367,12 @@ double Func::GetValue(size_t index, double x1, double x2) {
 
 
 	}
-	switch(GetGroupNo()) {
-
-//	case 6:	return ((Thermal_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x1, x2);
-//	case 9:	return ((Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x1, x2);
-//	case 10: return ((Interception_Functions*)m_Class)->GetFunctionValue(m_Opt,index, x1, x2);
-//	case 20: return ((WaterUptake_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x1, x2);
-//	case 24: return ((NC_Plant_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x1, x2);
-
-	}
 	return MISSING;
 }
 double Func::GetValue(size_t index, double x1, double x2, double x3, bool check) {
-	//switch(GetGroupNo()) {
-	//case 5:
-//	return ((Hydraulic_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x1, x2, x3);
-//	case 11: return ((Potential_Transpiration_Functions*)m_Class)->GetFunctionValue(m_Opt,index, x1, x2, x3);
-//	case 20: return ((WaterUptake_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x1, x2, x3, check);
-
-	//}
 	return MISSING;
 }
 double Func::GetValue(size_t index, double x1, double x2, double x3, double x4) {
-	switch(GetGroupNo()) {
-	//	case 11: return ((Potential_Transpiration_Functions*)m_Class)->GetFunctionValue(m_Opt,index, x1, x2, x3, x4);
-	//	case 20: return ((WaterUptake_Functions*)m_Class)->GetFunctionValue(m_Opt, index, x1, x2, x3, x4);
-
-	}
 	return MISSING;
 }
 function<double(bool)> Func::Get_boolBlank_Functor()
@@ -564,7 +465,7 @@ function<double(double, double)> Func::Get_D2_Functor()
 
 		}
 	}
-	//return *m_pFunctor;
+
 }
 function<double(double, double, double)> Func::Get_D3_Functor()
 {
@@ -578,7 +479,6 @@ function<double(double, double, double)> Func::Get_D3_Functor()
 		auto koll = FunctFactory(m_FunctorProp, m_FunctorPs_Par);// ->Get_D1_Functor();
 		return koll.Get_D3_Functor();
 	}
-	//return *m_pFunctor;
 }
 function<double(double, double, double, double)> Func::Get_D4_Functor()
 {

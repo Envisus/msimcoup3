@@ -49,12 +49,12 @@ bool FunctionProperties::Init(string filename)
 	size_t count=0;
 	bool end=false;
 	while(pos2<totsize) {
-		pos1=file.tellg();
+		pos1=size_t(file.tellg());
 		if(totsize<pos1+100000)
 			rrec=totsize-pos1;
-		str.resize(rrec);
+		str.resize(size_t(rrec));
 		file.read((char*)&str[0],rrec);
-		pos2=file.tellg();
+		pos2=size_t(file.tellg());
 		/*size_t nbyte=pos2-pos1;
 		for (int i=0;i<nbyte;i++)
 			str+=buf[i];*/

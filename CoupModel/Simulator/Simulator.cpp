@@ -127,7 +127,7 @@ bool Simulator::Start(bool MultiFlag, bool First)
 	m_pModelInfo->T_CountIterOrg=0;
 	m_pModelInfo->T_RatioOrgStep=1;
 	m_pModelInfo->T_CountAdd=0;
-	m_pModelInfo->T_TotNumIter=(m_pModelInfo->T_End- m_pModelInfo->T_Start)*m_pSim->RunOpt.noofiter;
+	m_pModelInfo->T_TotNumIter=long((m_pModelInfo->T_End- m_pModelInfo->T_Start)*m_pSim->RunOpt.noofiter);
 
 	m_pModelInfo->SetAbioticTimeSteps(m_StructureModel.m_Structure.TimeResolution);
 	  if(m_StructureModel.m_Structure.NitrogenCarbonStep==1) { // Nitrogen Carbon step is the same for Water and Heat processes
@@ -874,7 +874,7 @@ bool Simulator::Valid_Check_Interval(size_t i) {
 				auto delta = (m_pModelInfo->T_Current - m_ValPGFile[i].prevSimTime);
 				for(size_t j=0; j<m_ValPGFile[i].varindex.size(); j++){				
 					size_t LL=m_ValPGFile[i].val_listindex[j];
-					m_ValPGFile[i].accsimvalues[j]+=float(GetSimValValue(LL))*delta;
+					m_ValPGFile[i].accsimvalues[j]+=float(GetSimValValue(LL)*delta);
 					
 				}
 				m_ValPGFile[i].count++;
@@ -887,7 +887,7 @@ bool Simulator::Valid_Check_Interval(size_t i) {
 				if(m_ValPGFile[i].count>0) {
 					for(size_t j=0; j<m_ValPGFile[i].varindex.size(); j++){				
 						size_t LL=m_ValPGFile[i].val_listindex[j];
-						m_ValPGFile[i].simvalues[j]=m_ValPGFile[i].accsimvalues[j]/m_ValPGFile[i].accduration;
+						m_ValPGFile[i].simvalues[j]=float(m_ValPGFile[i].accsimvalues[j]/m_ValPGFile[i].accduration);
 						if(m_StructureModel.m_Structure.PressureHeadSign==0&&m_ShiftPointer!=nullptr) 
 								if(m_pValVar[LL].pBase==m_ShiftPointer) m_ValPGFile[i].simvalues[j]*=-1;
 						m_ValPGFile[i].accsimvalues[j]=float(GetSimValValue(LL)* (m_pModelInfo->T_Current - m_ValPGFile[i].prevSimTime));
@@ -909,7 +909,7 @@ bool Simulator::Valid_Check_Interval(size_t i) {
 			if(m_ValPGFile[i].count>0&&m_ValPGFile[i].PrevPos>0) {
 					for(size_t j=0; j<m_ValPGFile[i].varindex.size(); j++){				
 						size_t LL=m_ValPGFile[i].val_listindex[j];
-						m_ValPGFile[i].simvalues[j]=m_ValPGFile[i].accsimvalues[j]/m_ValPGFile[i].accduration;
+						m_ValPGFile[i].simvalues[j]=float(m_ValPGFile[i].accsimvalues[j]/m_ValPGFile[i].accduration);
 						if(m_StructureModel.m_Structure.PressureHeadSign==0&&m_ShiftPointer!=nullptr) 
 							if(m_pValVar[LL].pBase==m_ShiftPointer) m_ValPGFile[i].simvalues[j]*=-1;
 						m_ValPGFile[i].accsimvalues[j]=0;

@@ -308,8 +308,6 @@ bool CPG::WriteSelectionToExcel()
 string CPG::WriteExcelFile()
 {
   string tmp, status, filename;
-  size_t ist, iend;
-
 
 //  status="Wait while writing summary to excel file";
 //  ((CCoupModelView*)m_pView)->writeStatus(status);

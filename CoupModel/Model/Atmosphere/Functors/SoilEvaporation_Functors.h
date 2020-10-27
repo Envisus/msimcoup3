@@ -32,7 +32,7 @@ public:
 	}
 	double operator() (double xi) {
 		if (xi <= 0) {
-			double x = pow(1. - 19.*xi, 0.25);   //    ! 19 from Högström, 1996
+			double x = pow(1. - 19.*xi, 0.25);   //    ! 19 from Hï¿½gstrï¿½m, 1996
 			return log(pow((1. + x), 2)*(1. + x*x) / 8.) - 2 * atan(x) + Fix::PI / 2.;
 		}
 		else {
@@ -50,7 +50,7 @@ public:
 	}
 	double operator() (double xi) {
 		if (xi <= 0) {
-			double x = pow((1. - 11.6*xi), 0.25);  //   ! 11.6 from Högström, 1996
+			double x = pow((1. - 11.6*xi), 0.25);  //   ! 11.6 from Hï¿½gstrï¿½m, 1996
 			return 2.*log((1. + x*x) / 2.);
 		}
 		else {
@@ -138,7 +138,7 @@ public:
 	};
 private:
 	double zom, zoh, eta_old;
-	size_t max_itt;
+	int max_itt;
 	function<double(double, double, double, double)> f_Rich;
 	function<double(double)> f_psi_m, f_psi_h, f_RoughLHeat;;
 

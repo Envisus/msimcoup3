@@ -733,7 +733,7 @@ bool ValidationData::SetValSumVarCoef(size_t index, float me, float rmse, float 
 		Node.ObsValue=mobs;
 		Node.P_Error=perr;
 		Node.A_Error=aerr;
-		Node.LogLi.push_back(logli);
+		Node.LogLi.push_back(float(logli));
 
 		m_pSimDoc->m_ValSum_Array[index]=Node;
 
@@ -816,7 +816,7 @@ bool ValidationData::RemoveValFile(size_t index_remove)
 	
 	return true;
 }
-bool ValidationData::RemoveValNode(size_t index) // Index är från Alla valideringsvariabler
+bool ValidationData::RemoveValNode(size_t index) // Index ï¿½r frï¿½n Alla valideringsvariabler
 {
 	F *pCF;
 	if(!m_pSimDoc->ValidationFilePointer()->m_Exist) return false;

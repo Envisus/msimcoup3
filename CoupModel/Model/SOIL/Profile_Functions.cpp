@@ -169,7 +169,7 @@ DEPTH_type Profile_Functions::DepthDist(size_t choice, double totsum,  double s_
 		double thickn;
 		//for(int i=0; i<NL.Elem;i++) {
 		int i=0;
-		while(DepthLayers[i]<-s_depth&&i<DepthLayers.size()-1) {
+		while(DepthLayers[i]<-s_depth&&i<int(DepthLayers.size()-1)) {
 			 rlower=max(0.,1+dec*DepthLayers[i]);
 			 thickn=max(0.,min(ThicknessLayers[i],-s_depth-DepthLayers[i]+ThicknessLayers[i]));
 			 out.Dist[i]=-(rupper+rlower)*thickn*dec*totsum;
@@ -195,7 +195,7 @@ DEPTH_type Profile_Functions::DepthDist(size_t choice, double totsum,  double s_
 		double rlower;
 		int i=0;
 		rlower=max(s_exptail, exp(-deck*DepthLayers[0])-0.001*s_exptail);
-		while(rlower>s_exptail&&i<DepthLayers.size()-1) {
+		while(rlower>s_exptail&&i<int(DepthLayers.size()-1)) {
 			rlower=max(s_exptail, exp(-deck*DepthLayers[i])-0.001*s_exptail);
 			out.Dist[i]=(rupper-rlower)/(1.-s_exptail)*totsum;
 			rupper=rlower;

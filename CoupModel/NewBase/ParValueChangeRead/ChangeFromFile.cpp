@@ -485,8 +485,8 @@ size_t ChangeFromFile::SaveSelectedParamtersToCSVFile(size_t options)
 		}
 		break;
 	case Selected:
-		for (int i = 0; i < m_MultiRun_Array.size(); i++) {
-			for (int ii = 0; ii < dynamic_cast<MR*>(this)->MR_Get_NumberOfParametersWithinDim(i + 1); ii++) {
+		for (int i = 0; i < int(m_MultiRun_Array.size()); i++) {
+			for (int ii = 0; ii < int(dynamic_cast<MR*>(this)->MR_Get_NumberOfParametersWithinDim(i + 1)); ii++) {
 				string test = dynamic_cast<MR*>(this)->MR_GetParName(i + 1, ii + 1).c_str();
 				simb.pBase = dynamic_cast<MR*>(this)->MR_Get_pPar(i + 1, ii + 1);
 				if (simb.pBase->Is_Vector()) {

@@ -75,7 +75,7 @@ bool NC_Plant_Functions::Def()
 	NE *pNumPlants = m_pModelMap->GetNEPointer("Number of Plants");
 
 
-	Sw* pSw; Ps *pPs; P *pP; X *pX; T *pT; G *pG;   Gs *pGs;
+	Sw* pSw; P *pP; X *pX; T *pT; G *pG;   Gs *pGs;
 	pSw = new Sw(&Growth, PLANT, GENERAL, TRANSPORT, PHOTOSYNTHESIS, NORMAL);
 	Define(pSw, "Growth", 0, "off|Logistic function|Water use efficiency|Radiation use efficiency|Farquhar", "Nitrogen and Carbon > 0", 101);
 	pSw = new Sw(&PhotoInput, PLANT, GENERAL, TRANSPORT, PHOTOSYNTHESIS, NORMAL);
@@ -594,7 +594,6 @@ bool NC_Plant_Functions::Def()
 
 	;
 	// Parameters;
-	Func *pFunc;
 	string funcname;
 	FunctorProp functorprop;
 	vector<Ps*> ps_vec;
@@ -1627,7 +1626,7 @@ bool NC_Plant_Functions::Def_Allocation() {
 	vector<P*> p_vec;
 	ps_vec.clear();
 	vector<double> initv;	initv.assign(p_Plant->NumPlants, 0.);
-	Ps *pPs; P *pP;
+    P *pP;
 	Tab *pTab;
 
 	PLOT_PARAM plotpar;
@@ -1866,7 +1865,7 @@ bool NC_Plant_Functions::Def_LitterFall() {
 	vector<P*> p_vec;
 	ps_vec.clear();
 	vector<double> initv;	initv.assign(p_Plant->NumPlants, 0.);
-	Ps *pPs; P *pP;
+	P *pP;
 	Tab *pTab;
 
 	functorprop.FunctorInitOption = string::npos;
@@ -2322,7 +2321,7 @@ bool NC_Plant_Functions::Def_Fungi() {
 	vector<P*> p_vec;
 	ps_vec.clear();
 	vector<double> initv;	initv.assign(p_Plant->NumPlants, 0.);
-	Ps *pPs; P *pP;
+	P *pP;
 	Tab *pTab;
 
 	functorprop.FunctorInitOption = string::npos;
@@ -2693,7 +2692,7 @@ void NC_Plant_Functions::Def_NFixation()
 	vector<P*> p_vec;
 	ps_vec.clear();
 	vector<double> initv;	initv.assign(p_Plant->NumPlants, 0.);
-	Ps *pPs; P *pP;
+	P *pP;
 	Tab *pTab;
 
 	functorprop.FunctorInitOption = string::npos;
@@ -2734,16 +2733,6 @@ void NC_Plant_Functions::Def_NFixation()
 }
 
 bool NC_Plant_Functions::FunctionDef() {
-	Func *pFunc;
-
-	
-	double (NC_Plant_Functions::*fpoint1)(size_t, double);
-	double (NC_Plant_Functions::*fpoint2)(size_t, double, double);
-	
-
-
-
-
 	return true;
 }
 
@@ -3143,7 +3132,7 @@ double NC_Plant_Functions::GAirFunc(double ResAir,double  TP, double Temp) {
 //	Integer index
 
 //	cond=(1/(Lohammar_L[index]*LeafAreaFunctionL[index]))*NDrivWaterStress[index]
-	// Kanske bör vi ej multiplicera med LAI om vi räknar per LA?
+	// Kanske bï¿½r vi ej multiplicera med LAI om vi rï¿½knar per LA?
 
 	return 1./max(1., ResAir )*Fix::MOL_VOL_AIR*TP/(Temp+Fix::ABS_ZERO); // Conversion from s/m to mol/m2*sec
 }
@@ -3314,7 +3303,7 @@ Photo NC_Plant_Functions:: PhoSib(size_t index) {
 
 
 
-		TPCorr=TP_Corr();	//   	Korrektion av fryspunkten beroende av förhållandet mellan aktuellt och normalt lufttryck
+		TPCorr=TP_Corr();	//   	Korrektion av fryspunkten beroende av fï¿½rhï¿½llandet mellan aktuellt och normalt lufttryck
 		co2cap=CasCo2cap(pPlant->MC_DisplVar[index], TPCorr, NDrivTAir);		// mol air / m2
 		RespSoil=pNCSoil->CTotSoilRespRate/Fix::MOL_C/86400;		// konvertering till mol/m2/s
 		RootMRespiration=0.;
@@ -3383,7 +3372,7 @@ Photo NC_Plant_Functions:: PhoSib(size_t index) {
 			ASSIMY[index][ICount]=PMinFunc(P_Rub, P_Light, P_Sink, P_ATheta, P_BTheta);	// Cycalc	
 			ASSIMNY[index][ICount]=ASSIMY[index][ICount]*(1-RespGCoef[index]);
 // Not to be converted here			/MOL_C/86400)
-			// Dessa är nu per markyta
+			// Dessa ï¿½r nu per markyta
 
  			PCO2IN = StomataCO2Func(PCO2A, pCo2Bp,ASSIMNY[index][ICount] ,RespSoil,RespMPlant, GBoundary[index], GStomata[index], GAir[index], Vmax[index], co2cap);
 			EYY[index][ICount] = PCo2y[index][ICount]- PCO2IN;
@@ -3399,11 +3388,11 @@ Photo NC_Plant_Functions:: PhoSib(size_t index) {
 			
 		}
 
-		out.Gross=ASSIMY[index][ICConv[index]];	// Denna är per markyta
-		out.Net=ASSIMNY[index][ICConv[index]];	// Denna är per markyta
+		out.Gross=ASSIMY[index][ICConv[index]];	// Denna ï¿½r per markyta
+		out.Net=ASSIMNY[index][ICConv[index]];	// Denna ï¿½r per markyta
 
-//		Följande ekvationer beräknar de slutgiltiga värdena på CO2 cons inne i bladet och
-//		i bladverket. De är viktiga för nästa tidssteg.
+//		Fï¿½ljande ekvationer berï¿½knar de slutgiltiga vï¿½rdena pï¿½ CO2 cons inne i bladet och
+//		i bladverket. De ï¿½r viktiga fï¿½r nï¿½sta tidssteg.
 
 		PCo2I[index] = PCo2y[index][ICConv[index]]+out.Net*P_Surface/(4000*Vmax[index]); // + AssimNY(index, Icconv[index])/(4000*Vmax)*P_surface		
 		PCo2s[index] = PCo2I[index] + out.Net*P_Surface*1.6/GStomata[index];
@@ -3411,10 +3400,10 @@ Photo NC_Plant_Functions:: PhoSib(size_t index) {
         Co2b    = pCo2Bp / P_Surface;	// The real C_B forecast with the iterated fluxes.   
        
         Co2b	= (Co2b + (RespSoil+RespMPlant-out.Net+CO2_A*GAir[index])*(T_Step*86400/co2cap)) / (1+T_Step*86400/co2cap*GAir[index]);
-		//Denna ekvation är en omskrivning av: cb = cbp + (resp-bruttofoto+ga*(ca-cb))*(tid/kapacitet)
-		//där kvoten tid/kapacitet omvandlar från flöde till mängd
+		//Denna ekvation ï¿½r en omskrivning av: cb = cbp + (resp-bruttofoto+ga*(ca-cb))*(tid/kapacitet)
+		//dï¿½r kvoten tid/kapacitet omvandlar frï¿½n flï¿½de till mï¿½ngd
 
-        pCo2Bp	= Co2b * P_Surface;		// go back from molC / mol air to Pascals. Denna används i nästa tidssteg
+        pCo2Bp	= Co2b * P_Surface;		// go back from molC / mol air to Pascals. Denna anvï¿½nds i nï¿½sta tidssteg
 
 		// Outputs
         Cflux[index]	= GAir[index]/1.4*(Co2b-CO2_A);		// carbon flux between CAS and reference level
@@ -3447,7 +3436,7 @@ double NC_Plant_Functions::StomataCO2Func(double PCO2A, double pCo2Bp, double As
 	CO2_A	= PCO2A/	P_Surface;
    
 	CO2_B	= (CO2_B+(RespSoil+RespMPlant-Assim+CO2_A*GA)*(T_Step*86400/co2cap))/(1+T_Step*86000/co2cap*GA) ;
-	//Sedan beräknas co2A på nytt
+	//Sedan berï¿½knas co2A pï¿½ nytt
 
 	P_CO2_B	= CO2_B * P_Surface;
 

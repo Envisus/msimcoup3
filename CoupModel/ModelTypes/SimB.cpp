@@ -72,7 +72,7 @@ SimB::~SimB(void)
 
 bool SimB::IsTrue(size_t i) const{
 	
-	auto VariableValue = (conditions_Array[i].variable)->GetIntValue();
+	auto VariableValue = int((conditions_Array[i].variable)->GetIntValue());
 	auto ConditionValue = conditions_Array[i].value;
    	switch(conditions_Array[i].op) {
 		case SIMB_COMP::EQ	: if(VariableValue == ConditionValue)	return true;	return false;

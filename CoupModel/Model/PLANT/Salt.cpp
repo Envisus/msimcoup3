@@ -398,7 +398,6 @@ bool Salt::Def()
 	SoilModel* pSoil = (SoilModel*)m_pModelInfo->GetModelPtr("Soil Model");
 	p_Soil_WaterF = &pSoil->m_SoilFrost;
 
-	Func *pFunc;
 	string funcname;
 	FunctorProp functorprop;
 	vector<Ps*> ps_vec;

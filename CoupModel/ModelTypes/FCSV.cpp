@@ -74,7 +74,7 @@ void FCSV::CheckSizeOfFile()
 	while (m_fstream->good()) {
 		count++;
 		m_fstream->getline(&line[0],NUMCHAR);
-		size_t n = m_fstream->gcount();
+		size_t n = size_t(m_fstream->gcount());
 		var_count = 0;
 		line.resize(n);
 		char delim = ',';
@@ -136,7 +136,7 @@ bool FCSV::CheckMinMaxValues()
 	while (m_fstream->good()) {
 		count++;
 		m_fstream->getline(&line[0], NUMCHAR);
-		size_t n = m_fstream->gcount();
+		auto n = size_t(m_fstream->gcount());
 		var_count = 0;
 		line.resize(n);
 		char delim = ',';
@@ -243,7 +243,7 @@ size_t FCSV::AssignKey_WithValues() {
 	while (m_fstream->good()) {
 		line_count++;
 		m_fstream->getline(&line[0], NUMCHAR);
-		size_t n = m_fstream->gcount();
+		auto n = size_t(m_fstream->gcount());
 		vector<double> Values;
 		vector<string> KeyValues;
 		Values.resize(m_ParameterPointers.size()+1);

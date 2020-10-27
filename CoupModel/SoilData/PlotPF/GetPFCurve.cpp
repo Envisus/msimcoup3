@@ -202,7 +202,7 @@ bool GetPFCurve::SaveRecord(bool New)
 			}
 		}
 		else {
-			m_ActProfile.RecHeader = m_NewHeaderFile.tellp();
+			m_ActProfile.RecHeader = size_t(m_NewHeaderFile.tellp());
 		}
 		auto koll = sizeof(unsigned long);
 		int byte_towrite = 48 + koll;

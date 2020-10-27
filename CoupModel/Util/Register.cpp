@@ -77,7 +77,7 @@ size_t Register::ReadRegisterFile() {
 			getline(split, item, ',');
 			getline(split, numstr, ',');
 
-			if (count < Num_int) {
+			if (int(count) < Num_int) {
 				m_MapInt.insert(pair<string, int>(item, FUtil::AtoInt(numstr)));
 				}
 			else {

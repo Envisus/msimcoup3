@@ -186,7 +186,7 @@ vector<float> SmartFlexibleValidation::GetObsValueFromValSumFlex(string IDFileNa
 	if (m_MStorage.GetMultiP(0, 0) == m_MStorage.GetMultiP(m_MStorage.GetNumAccepted() - 1, 0)) RunCodeValid = false;
 	for (size_t runno = 0; runno < m_MStorage.GetNumAccepted(); runno++) {
 		float runcode = m_MStorage.GetMultiP(runno, 0);
-		if (!RunCodeValid) runcode = runno + 1;
+		if (!RunCodeValid) runcode = float(runno) + 1.f;
 		size_t icode = size_t(runcode + 0.01);
 		auto it = MapFlexVal[index_file].find(icode);
 		if (it != MapFlexVal[index_file].end()) {
@@ -322,7 +322,6 @@ bool SmartFlexibleValidation::CalculatePerformanceAndSetValues() {
 			if (valsum.Sim_Value_Residual_Index < pDoc->m_ValSum_Array.size()) {
 				valsumres = GetValSumStruct(valsum.Sim_Value_Residual_Index);
 			}
-			size_t imore;
 			vector<float> simlowestdim, obslowestdim;
 		
 			 for(size_t irun=0; irun<m_pSimDoc->MR_Get_TotalNumberofRuns(); irun++) {
@@ -413,7 +412,7 @@ bool SmartFlexibleValidation::CalculatePerformanceAndSetValues() {
 							valsum.ME.push_back(a.me);
 							valsum.RMSE.push_back(a.rmse);
 							valsum.NSE.push_back(a.nse);
-							valsum.LogLi.push_back(likelivalue);
+							valsum.LogLi.push_back(float(likelivalue));
 						}
 						simlowestdim.resize(0);
 						obslowestdim.resize(0);
@@ -451,7 +450,7 @@ bool SmartFlexibleValidation::CalculateMeanPerformanceAndSetValues()
 	else
 		multivalid = false;
 
-	double meansum, meanvalue;
+	double meansum;
 	size_t mean_n;
 	auto mean = [&](double dvalue) {
 		meansum += dvalue;
@@ -468,32 +467,32 @@ bool SmartFlexibleValidation::CalculateMeanPerformanceAndSetValues()
 #endif
 			meansum = 0; mean_n = 0;
 			for (auto it = valsum.ME.begin(); it != valsum.ME.end(); mean(*it), it++);
-				if (mean_n != 0) valsum.ME_mean = meansum / mean_n;
+				if (mean_n != 0) valsum.ME_mean = float(meansum / mean_n);
 			meansum = 0; mean_n = 0;
 			for (auto it = valsum.R2_Multi.begin(); it != valsum.R2_Multi.end(); mean(*it), it++);
-				if (mean_n != 0) valsum.R2_Multi_mean = meansum / mean_n;
+				if (mean_n != 0) valsum.R2_Multi_mean = float(meansum / mean_n);
 			meansum = 0; mean_n = 0;
 			for (auto it = valsum.InterCept_Multi.begin(); it != valsum.InterCept_Multi.end(); mean(*it), it++);
-				if (mean_n != 0) valsum.InterCept_Multi_mean = meansum / mean_n;
+				if (mean_n != 0) valsum.InterCept_Multi_mean = float( meansum / mean_n);
 			meansum = 0; mean_n = 0;
 			for (auto it = valsum.Slope_Multi.begin(); it != valsum.Slope_Multi.end(); mean(*it), it++);
-				if (mean_n != 0) valsum.Slope_Multi_mean = meansum / mean_n;
+				if (mean_n != 0) valsum.Slope_Multi_mean = float(meansum / mean_n);
 
 			for (auto it = valsum.LogLi.begin(); it != valsum.LogLi.end(); mean(*it), it++);
-				if (mean_n != 0) valsum.LogLi_mean = meansum / mean_n;
+				if (mean_n != 0) valsum.LogLi_mean = float(meansum / mean_n);
 			meansum = 0; mean_n = 0;
 			for (auto it = valsum.RMSE.begin(); it != valsum.RMSE.end(); mean(*it), it++);
-				if (mean_n != 0) valsum.RMSE_mean = meansum / mean_n;
+				if (mean_n != 0) valsum.RMSE_mean = float(meansum / mean_n);
 			
 			meansum = 0; mean_n = 0;
 			for (auto it = valsum.NSE.begin(); it != valsum.NSE.end(); mean(*it), it++);
-			if (mean_n != 0) valsum.NSE_mean = meansum / mean_n;
+			if (mean_n != 0) valsum.NSE_mean = float(meansum / mean_n);
 
 			for (auto it = valsum.ObsValueVector.begin(); it != valsum.ObsValueVector.end(); mean(*it), it++);
-				if (mean_n != 0) valsum.ObsValue = meansum / mean_n;
+				if (mean_n != 0) valsum.ObsValue = float(meansum / mean_n);
 			meansum = 0; mean_n = 0;
 			for (auto it = valsum.NSE.begin(); it != valsum.NSE.end(); mean(*it), it++);
-				if (mean_n != 0) valsum.NSE_mean = meansum / mean_n;
+				if (mean_n != 0) valsum.NSE_mean = float(meansum / mean_n);
 
 			valsum.SimValue = valsum.ObsValue + valsum.ME_mean;
 
@@ -679,7 +678,7 @@ BAYES option;
 
 bool SmartFlexibleValidation::SetValSum(size_t index, VALSUMv valsumv) {
 	m_pSimDoc = dynamic_cast<MR*>(this);
-	if (m_pSimDoc == nullptr) return MISSING;
+	if (m_pSimDoc == nullptr) return false;
 	if (index < m_pSimDoc->m_ValSum_Array.size()) {
 		m_pSimDoc->m_ValSum_Array[index] = valsumv;
 		return true;

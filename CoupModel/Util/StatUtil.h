@@ -128,7 +128,7 @@ template <class T>void SStat(T vals[], unsigned long n, size_t  *ncheck, SimpleD
 {
 	T sum=0;
 	size_t ncount=0;
-	T min1=1.1E38, max1=-1.1E38;
+	T min1=T(1.1E38), max1=-T(1.1E38);
 
   for (size_t i=0; i<n; i++) {
 	  if(abs(vals[i])<1.E37) {

@@ -147,10 +147,10 @@ fstream PG_Stream::GetLocalReadOnlyStream(string filename)
 			driveFile.open(testname, ios::in | ios::binary);
 			if (driveFile.is_open()) {
 #ifndef COUPSTD
-				TRACE("Can't Open file %s´\n", pg.status.FileName);
+				TRACE("Can't Open file %sï¿½\n", pg.status.FileName);
 				//Display error message
 				string str = "The PG-file: ";
-				str += testname; str += " couldn´t be opened.";
+				str += testname; str += " couldnï¿½t be opened.";
 				if (m_ShowError) MFC_Util::MessageBox(str.c_str(), "File open error", MB_OK | MB_ICONEXCLAMATION);
 #endif
 				return driveFile;
@@ -626,9 +626,9 @@ bool PG_Stream::Save(string filename)
 	if(!driveFile.is_open())
 		{
 #ifndef COUPSTD
-			TRACE("Can't Open file %s´\n", pg.status.FileName); 
+			TRACE("Can't Open file %sï¿½\n", pg.status.FileName); 
 					string str;
-					str="The PG-file: ";str+=pg.status.FileName; str+=" couldn´t be opened.";
+					str="The PG-file: ";str+=pg.status.FileName; str+=" couldnï¿½t be opened.";
 			//Display error message
 			MFC_Util::MessageBox(str.c_str(),"File Open Error",MB_OK|MB_ICONEXCLAMATION);
 			return false;
@@ -664,9 +664,9 @@ bool PG_Stream::SaveAs(string filename, bool NewFile)
 			m_MainPGStreamReadWrite.open(filename, ios::out | ios::in | ios::binary);
 			if (!m_MainPGStreamReadWrite.is_open()) {
 #ifndef COUPSTD
-				TRACE("Can't Open file %s´\n", filename);
+				TRACE("Can't Open file %sï¿½\n", filename);
 				string str;
-				str = "The PG-file: "; str += filename; str += " couldn´t be opened.";
+				str = "The PG-file: "; str += filename; str += " couldnï¿½t be opened.";
 				//Display error message
 				MFC_Util::MessageBox(str.c_str(), "File Open Error", MB_OK | MB_ICONEXCLAMATION);
 #endif				
@@ -696,9 +696,9 @@ bool PG_Stream::SaveAs(string filename, bool NewFile)
 			m_ExtraPGStreamWrite.open(filename, ios::out | ios::in | ios::binary);
 			if (!m_ExtraPGStreamWrite.is_open()) {
 #ifndef COUPSTD
-				TRACE("Can't Open file %s´\n", filename);
+				TRACE("Can't Open file %sï¿½\n", filename);
 				string str;
-				str = "The PG-file: "; str += filename; str += " couldn´t be opened.";
+				str = "The PG-file: "; str += filename; str += " couldnï¿½t be opened.";
 				//Display error message
 				MFC_Util::MessageBox(str.c_str(), "File Open Error", MB_OK | MB_ICONEXCLAMATION);
 #endif
@@ -763,7 +763,7 @@ bool PG_Stream::Open(string filename, bool ShowError)
 #ifndef COUPSTD
 				TRACE("Can't Open file %s to show all information", pg.status.FileName); 
 					string str;
-					str="The PG-file: ";str+=pg.status.FileName; str+=" couldn´t be opened.";
+					str="The PG-file: ";str+=pg.status.FileName; str+=" couldnï¿½t be opened.";
 			//Display error message
 				MFC_Util::MessageBox(str.c_str(),"File Open Error",MB_OK|MB_ICONEXCLAMATION);
 #endif
@@ -777,7 +777,7 @@ bool PG_Stream::Open(string filename, bool ShowError)
 #ifndef COUPSTD
 				TRACE("Can't Open file %s to show description of data", pg.status.FileName); 
 					string str;
-					str="The PG-file: ";str+=pg.status.FileName; str+=" couldn´t be opened.";
+					str="The PG-file: ";str+=pg.status.FileName; str+=" couldnï¿½t be opened.";
 			//Display error message
 				MFC_Util::MessageBox(str.c_str(),"File Open Error",MB_OK|MB_ICONEXCLAMATION);
 #endif
@@ -1678,14 +1678,14 @@ bool PG_Stream::OpenMainPGStreamAsReadOnly(string filename)
 			m_MainPGStreamReadWrite.open(testname, ios::in | ios::binary);
 			if (!m_MainPGStreamReadWrite.is_open()) {
 #ifndef COUPSTD
-				TRACE("Can't Open file %s´\n", pg.status.FileName);
+				TRACE("Can't Open file %sï¿½\n", pg.status.FileName);
 				m_FailedFileName = MFC_Util::GetProfileStringStd("Failed_Name", m_FailedFileName);
 				//Display error message
 				if (m_FailedFileName != pg.status.FileName) {
 					m_FailedFileName = pg.status.FileName;
 					FUtil::WriteProfileStringStd("Failed_Name", pg.status.FileName);
 					string str;
-					str = "The PG-file: "; str += pg.status.FileName; str += " couldn´t be opened.";
+					str = "The PG-file: "; str += pg.status.FileName; str += " couldnï¿½t be opened.";
 
 					CMainFrame *p_mainframe;
 					p_mainframe = (CMainFrame*)AfxGetMainWnd();
@@ -1704,8 +1704,7 @@ bool PG_Stream::OpenMainPGStreamAsReadOnly(string filename)
 	}
 
 	pg.status.FileName = filename;
-	unsigned int ivar;
-	fpos_t actpos, endpos, test_old;
+
     std::streamsize newpos = 0;
 
 	m_MainPGStreamReadWrite.seekg(newpos, ios::end);

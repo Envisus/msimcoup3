@@ -203,7 +203,7 @@ unsigned long SelectedEnsembles::UpdateAcceptedRuns(bool Reset, bool SaveToFile)
 				vtest = 1 - m_VarValidTransformed[index_trans].VarValidVector[indextsv];
 			}
 			else
-				vtest = 1. - GetValid(irun, ind_rmse)*GetValid(irun, ind_rmse) / rmse_o;
+				vtest = 1.f - GetValid(irun, ind_rmse)*GetValid(irun, ind_rmse) / rmse_o;
 			if (vtest > MISSING&&vtest < 1.00001)
 				fval = float(vtest);
 		}
@@ -265,7 +265,7 @@ unsigned long SelectedEnsembles::UpdateAcceptedRuns(bool Reset, bool SaveToFile)
 	};
 	auto testcond_tsv_mean = [&]() {
 		for (unsigned long i = 0; i<m_TotalNumberRuns; i++) {
-			float fval;
+
 			if (GetAcceptedRunNo(i)) {
 				/*for (size_t iper = 0; iper < 1; iper++) {
 					fval = m_MeanTSV_All[iper][i];
@@ -1545,7 +1545,6 @@ void SelectedEnsembles::Update_SV_VarStat(bool AcceptedOnly) {
 	auto MakeStat = [&](  bool posterior) {
 		vector<float> values;
 		size_t shift_pos = 0;
-		float candidate;
 		size_t num_runs = m_TotalNumberRuns;
 		if (posterior) {
 			shift_pos = 4;
@@ -1732,7 +1731,7 @@ void SelectedEnsembles::Update_TSV_VarStat(bool AcceptedOnly) {
 		}
 		if (ind_split == 0) {
 			unsigned long ind, ind_rmse, ind_a1;
-			float rmse_o, vtest;
+			float rmse_o;
 
 
 			if (ip >= m_NumValid) {
@@ -1873,8 +1872,8 @@ vector<float> SelectedEnsembles::GetPost_TSV_ValidPerformanceIndicatorVector(uns
 					vtest = 1- m_VarValidTransformed[index_trans].VarValidVector[indextsv];
 				}
 				else
-					vtest = 1. - GetValid(irun, ind_rmse)*GetValid(irun, ind_rmse) / rmse_o;
-				if (vtest > MISSING&&vtest < 1.00001)
+					vtest = 1.f - GetValid(irun, ind_rmse)*GetValid(irun, ind_rmse) / rmse_o;
+				if (vtest > MISSING&&vtest < 1.00001f)
 					fval = float(vtest);
 			}
 			if (fval > MISSING)

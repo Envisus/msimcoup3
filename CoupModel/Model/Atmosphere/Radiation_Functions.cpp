@@ -602,10 +602,7 @@ bool Radiation_Functions::Def()
 	//pSw= new Sw(&SnowSurEbal,SINGLE,SNOW, STORAGE,NOBPROC, NORMAL);
 }
 bool Radiation_Functions::FunctionDef() {
-	Func *pFunc;
 
-
-	
 		f_daylength = Physf(FUNC_CHOICE::DAYLENGTH, Latitude, AltSimPosition, RadFracAng1, RadFracAng2);
 		f_potrisday = Physf(FUNC_CHOICE::POTRISDAILY, Latitude, AltSimPosition, RadFracAng1, RadFracAng2);
 /*		double (PhysFunctions::*fpointfys1)(double);

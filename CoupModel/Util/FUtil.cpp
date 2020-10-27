@@ -583,7 +583,7 @@ bool FUtil::IsFileExisting(string str)
  int FUtil::GetOptionIndex(string optionlist, string str)
 {
 
-	 int ipos_end, index;
+	 int index;
 	 vector<string> v;
 	 int ipos = optionlist.find("\n");
 	 size_t pos = 0;

@@ -492,10 +492,6 @@ void Soil_HeatF::WaterPipeModule()
 double PartOfDay=0.1;
 double FrozenLatentHeat;
 
-
-int Nshift, ISEG;
-
-
 	IntegerWaterPipeLayer=size_t(WaterPipeLayer.front());
 
         

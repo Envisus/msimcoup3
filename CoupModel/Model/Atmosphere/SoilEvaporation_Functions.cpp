@@ -8,8 +8,6 @@ SoilEvaporation_Functions::SoilEvaporation_Functions(void)
 {
 	ModuleNo = 13;
 	ModuleConditions = "Evaporation>0";
-	Ps *pPs;
-
 }
 SoilEvaporation_Functions::~SoilEvaporation_Functions(void)
 {
@@ -346,7 +344,6 @@ bool SoilEvaporation_Functions::Def()
 }
 
 bool SoilEvaporation_Functions::FunctionDef() {
-	Func *pFunc;
 	/*double (SoilEvaporation_Functions::*fpoint)(double);
 		fpoint=&SoilEvaporation_Functions::RaBound;
 		pFunc= new Func(ATMBOUNDARY,ATMOSPHERE, SOILEVAPORATION,NOBPROC, NORMAL);
@@ -386,8 +383,6 @@ bool SoilEvaporation_Functions::FunctionDef() {
 		pFunc= new Func(SOILSURFACE,VAPOUR, SOILEVAPORATION,NOBPROC, NORMAL);
 		Define(pFunc, m_fpointer0_4.size(),3,this, "Analytical Atmosphere Stability Function"); m_fpointer0_4.push_back(fpoint4);
 		res=pFunc->GetValue(10.,3,2.,1.);*/
-
-
 	return true;
 }
 

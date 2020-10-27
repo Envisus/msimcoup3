@@ -28,7 +28,7 @@ bool P_ExternalInputs_Functions::Def()
 	WaterUptake* p_Plant=&pPlant->m_WaterUptake;
 	NE *pNumPlants=m_pModelMap->GetNEPointer("Number of Plants");
 
-	Sw* pSw; Ps *pPs; P *pP; X *pX; T *pT; G *pG;  Gs *pGs; Xs* pXs; Ts* pTs;
+	Ps *pPs; P *pP; Xs* pXs; Ts* pTs;
 
 
 
@@ -60,10 +60,7 @@ bool P_ExternalInputs_Functions::Def()
 	pPs = new Ps(&P_FertDiss_k, SOILSURFACE, PHOSPHORUS, TRANSPORT, FORCING_BIOLOGY, NORMAL);
 	Define(pPs, "P Fert Dis k", 0.015, "-", " Phosphorus >= 1|N Fertilization >=1", 0.001, 1.0);
 
-
-
-		Func *pFunc;
-		// Parameters;
+	// Parameters;
 		string funcname;
 		FunctorProp functorprop;
 		vector<Ps*> ps_vec;

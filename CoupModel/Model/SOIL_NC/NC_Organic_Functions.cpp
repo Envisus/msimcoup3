@@ -693,8 +693,7 @@ bool NC_Organic_Functions::FunctionDef() {
 	vector<P*> p_vec;
 	ps_vec.clear();
 	vector<double> initv;	
-	Ps *pPs; P *pP;
-	Tab *pTab;
+	Ps *pPs;
 	Func *pFunc;
 	functorprop.FunctorInitOption = string::npos;
 	functorprop.pModelInfo = m_pModelInfo;

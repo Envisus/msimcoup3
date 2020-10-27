@@ -289,7 +289,7 @@ lot::set_generator(const int type, const int gType) {
     case RAN_MT:
       Set_MT(gType);
       uniform_no_zero_generator = &lot::MT_genrand;
-      MT_sgenrand(time(&timer));
+      MT_sgenrand(long(time(&timer)));
       break;
     default:
       cerr << "Unrecognized generator type!" << endl;

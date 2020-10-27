@@ -1607,7 +1607,7 @@ bool MR::UpdateCoVar()
 
 		float v;
 		for(size_t i=0;i<numall;i++){
-				float vvv=Stats::Moments::mean(numaccept,&m_PValues[i*numaccept]);
+				float vvv=float(Stats::Moments::mean(numaccept,&m_PValues[i*numaccept]));
 				MR_Set_BayesMean(i, vvv);
 
 				for(size_t ii=0;ii<numall;ii++){
@@ -1617,11 +1617,11 @@ bool MR::UpdateCoVar()
 						//float v=BAYESIANCALIB_mp_GETCOCOR();
 						if(i==ii) {
 
-							v=Stats::Moments::variance(numaccept,&m_PValues[i*numaccept],false);
+							v=float(Stats::Moments::variance(numaccept,&m_PValues[i*numaccept],false));
 						}
 						else {
 
-							v=Stats::Moments::correlation(numaccept,&m_PValues[i*numaccept],&m_PValues[ii*numaccept]);
+							v=float(Stats::Moments::correlation(numaccept,&m_PValues[i*numaccept],&m_PValues[ii*numaccept]));
 
 						}
 						
@@ -1915,8 +1915,8 @@ void MR::MR_Storage_Add()
 				string namep=string(pPar->GetName());
 				nTabIndex=MR_GetTabIndex(i+1,ii+1);
 				ParType=MR_GetParType(i+1,ii+1);
-				min=MR_GetMin(i+1,ii+1); // This variable does not always have realistic values.
-				max=MR_GetMax(i+1,ii+1); // " "
+				min=float(MR_GetMin(i+1,ii+1)); // This variable does not always have realistic values.
+				max=float(MR_GetMax(i+1,ii+1)); // " "
 				switch (MR_GetMethod(i+1,ii+1)) {
 				case 0: Ratio=(float)(icount-1)/(float)(irep-1);// linear
 						Float=Ratio*max+(1-Ratio)*min;
@@ -1934,18 +1934,18 @@ void MR::MR_Storage_Add()
 				case 11:
 
 						if(ParType==0) {
-							Float=pPar->GetValue();
+							Float=float(pPar->GetValue());
 						}
 							else {
 								pCPt=(P*)pPar;
-								Float=pCPt->GetValue(nTabIndex);
+								Float=float(pCPt->GetValue(nTabIndex));
 						}
 						break; 
                 case 4: // Table  
 					    if (nTabIndex == -1) // Table, Note that ii is not incremented during MRs!!
-					      Float = ((Ps*)pPar)->MR_Get_TabValue(icount - 1);  // Ps case
+					      Float = float(((Ps*)pPar)->MR_Get_TabValue(icount - 1));  // Ps case
 						else 
-						  Float = ((P*)pPar)->MR_Get_TabValue(nTabIndex, icount - 1);  // Ps case
+						  Float = float(((P*)pPar)->MR_Get_TabValue(nTabIndex, icount - 1));  // Ps case
 				       	break;
 						// 	Float=MR_GetTableValue(i+1,ii+1,icount-1);				 	    break;
 				case 5: // Database Records
@@ -1967,11 +1967,11 @@ void MR::MR_Storage_Add()
 				case 10:
 
 						if(ParType==0) {
-							Float=pPar->GetValue();
+							Float=float(pPar->GetValue());
 						}
 							else {
 								pCPt=(P*)pPar;
-								Float=pCPt->GetValue(nTabIndex);
+								Float=float(pCPt->GetValue(nTabIndex));
 						}
 						break;
 
@@ -2032,7 +2032,7 @@ void MR::MR_Storage_Add()
 
 
 	
-	for(size_t i=0;i<m_ValidationData.GetNumSumVarVariables();i++) {
+	for(int i=0;i<m_ValidationData.GetNumSumVarVariables();i++) {
 		indexp=i*3;
 		m_MStorage.AddValidSum(irec,indexp+0, m_ValidationData.GetValSumVarME(i));
 		m_MStorage.AddValidSum(irec,indexp+1, m_ValidationData.GetValSumVarRMSE(i));
@@ -2124,8 +2124,8 @@ size_t MR::MR_GetValidIndex_IndexInValFile_InDim1()
 {
 	SimB *pPar;
 	size_t count = 0;
-	for (int i = 0; i < MR_GetNumberOfDimensions(); i++) {
-		for (int ii = 0; ii < MR_Get_NumberOfParametersWithinDim(i + 1); ii++) {
+	for (int i = 0; i < int(MR_GetNumberOfDimensions()); i++) {
+		for (int ii = 0; ii < int(MR_Get_NumberOfParametersWithinDim(i + 1)); ii++) {
 			pPar = MR_Get_pPar(i + 1, ii + 1);
 			string namep = pPar->GetName();
 			if (namep == "Index in val file"&&i==0) {
@@ -2338,8 +2338,8 @@ void MR::GetProfileFromPlotPF( bool Add_To_Multi, bool Message)
 		pLDep->		SetValue(i, coef.LowerDepth	);
 		icount=0;
 		if(PedoFunction>2) {
-			EstimateMin=pLValid->GetValue(i);
-			EstimateMax=pUValid->GetValue(i);
+			EstimateMin=float(pLValid->GetValue(i));
+			EstimateMax=float(pUValid->GetValue(i));
 
 
 			//PLOTPF_mp_ACTUALLEVEL=i+1;
@@ -2354,7 +2354,7 @@ void MR::GetProfileFromPlotPF( bool Add_To_Multi, bool Message)
 						Theta[icount]=theta[jj];
 						Psi[icount]=pressure_head[jj];
 						if(Psi[icount]>14900.&&Psi[icount]<15100.)
-							Wilt=Theta[icount];
+							Wilt=float(Theta[icount]);
 						icount++;
 				}
 			}
@@ -2377,8 +2377,8 @@ void MR::GetProfileFromPlotPF( bool Add_To_Multi, bool Message)
 				pLinR2->SetValue(i, R2);	
 
 				coef.Gen_Alfa=1/out.AirEntry;
-				coef.Gen_N=1+out.Lambda;
-				coef.Gen_M=1-1./coef.Gen_N;
+				coef.Gen_N=1.f+out.Lambda;
+				coef.Gen_M=1.f-1.f/coef.Gen_N;
 				//PLOTPF_mp_BGA[i]=float(1.)/PLOTPF_mp_APSIE[i];
 				//PLOTPF_mp_BGN[i]=float(1.)+PLOTPF_mp_ALAMDA[i];
 			//	PLOTPF_mp_BGM[i]=float(1.)-1/PLOTPF_mp_BGN[i];
@@ -2418,10 +2418,10 @@ void MR::GetProfileFromPlotPF( bool Add_To_Multi, bool Message)
 			pWilt->SetValue(i, pWilt->GetValue(i - 1));
 			pUDep->SetValue(i, pLDep->GetValue(i - 1));
 			pLDep->SetValue(i, pLDep->GetValue(i - 1) + float(0.1));
-			value = pLambda->GetValue(i - 1);
-			value = pLambda->GetValue(i);
+			value = float(pLambda->GetValue(i - 1));
+			value = float(pLambda->GetValue(i));
 			pLambda->SetValue(i, pLambda->GetValue(i - 1));
-			value = pLambda->GetValue(i);
+			value = float(pLambda->GetValue(i));
 			pAirEntry->SetValue(i, pAirEntry->GetValue(i - 1));
 			pSaturation->SetValue(i, pSaturation->GetValue(i - 1));
 			pResidual->SetValue(i, pResidual->GetValue(i - 1));
@@ -2557,7 +2557,7 @@ void MR::MR_ReCalculatePostDist(bool BayesMeanMethod)
 				}
 				else if(!BayesMeanMethod) {
 					double fval=m_MStorage.GetMultiP(irun,i);
-					values[icount]=fval;
+					values[icount]=float(fval);
 					icount++;
 				}
 		}

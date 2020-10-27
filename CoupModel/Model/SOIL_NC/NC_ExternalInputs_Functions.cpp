@@ -27,7 +27,7 @@ bool NC_ExternalInputs_Functions::Def()
 	PlantOrgModel* pPlantOrg = (PlantOrgModel*)m_pModelInfo->GetModelPtr("Plant Org Model");
 	p_NC_Plant = &pPlantOrg->m_NC_Plant;
 
-	Sw* pSw; Xs* pXs; Ts *pTs; Gs *pGs; T* pT; P* pP; Ps *pPs; FCSV *pFCSV;
+	Sw* pSw; Xs* pXs; Ts *pTs; Gs *pGs; T* pT; Ps *pPs;
 	NE *pNumPlants=m_pModelMap->GetNEPointer("Number of Plants");
 	pSw= new Sw(&N_Fertilization, ATMBOUNDARY, NITROGEN, TRANSPORT, FORCING_BIOLOGY, NORMAL);
 		Define(pSw,   "N Fertilization", 0, "off|Parameters|PG-file|Plant Stage Table|Year Based Table - 1 app|Year Based Table - 3 app","Nitrogen and Carbon >0", 117);

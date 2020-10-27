@@ -81,8 +81,8 @@ bool AbioticResponses::Def()
 	vector<Ps*> ps_vec;
 	vector<P*> p_vec;
 	ps_vec.clear();
-	Ps *pPs; P *pP;
-	Tab *pTab;
+	Ps *pPs;
+
 
 	functorprop.FunctorInitOption = string::npos;
 	functorprop.pModelInfo = m_pModelInfo;
@@ -239,8 +239,7 @@ bool AbioticResponses::Def()
 
 }
 bool AbioticResponses::FunctionDef() {
-	Func *pFunc;
-/*	double (AbioticResponses_Functions::*fpoint)(double);
+	/*	double (AbioticResponses_Functions::*fpoint)(double);
 	fpoint = &AbioticResponses_Functions::CommonTempFunction;
 	pFunc = new Func(SIMPROFILE, GENERAL, NOFPROC, DECOMPOSITION, NORMAL);
 	Define(pFunc, m_fpointer0_1.size(), 0, this, "Common Temperature Response"); m_fpointer0_1.push_back(fpoint);

@@ -479,18 +479,15 @@ CDB* GetDB::CreateNewDBObject_FromCSVFile(string FileName)
 				strvalue = line.substr(0, line.find(delim));
 				int ncol = FUtil::AtoInt(strvalue);
 				m_Rw.wInt(&ncol);
-				for (size_t col = 0; col < ncol; col++) {
+				for (int col = 0; col < ncol; col++) {
 					getline(stream, line);
 					type = line.substr(0, line.find(delim));
 					line = line.substr(line.find(delim) + 1);
 					m_Rw.wString(&line);
 				}
-
 				m_Rw.wInt(&nrows);
-
-
-				for (size_t row = 0; row < nrows; row++) {
-					for (size_t col = 0; col < ncol; col++) {
+				for (int row = 0; row < nrows; row++) {
+					for (int col = 0; col < ncol; col++) {
 						getline(stream, line);
 						type = line.substr(0, line.find(delim));
 						line = line.substr(line.find(delim) + 1);
@@ -500,10 +497,18 @@ CDB* GetDB::CreateNewDBObject_FromCSVFile(string FileName)
 						FUtil::trim_index(name);
 						strvalue = line.substr(line.find(delim) + 1);
 						P* pP = dynamic_cast<P*>(m_pSimDoc->GetPtr(type, group, name));
-						if (pP != nullptr);
-						float fvalue = FUtil::AtoFloat(strvalue);
-						pP->SetDBValue(row,double(fvalue));
-						m_Rw.wFloat(&fvalue);
+						if (pP != nullptr) {
+                            float fvalue = FUtil::AtoFloat(strvalue);
+                            pP->SetDBValue(row,double(fvalue));
+                            pP->SetDBValue(row,double(fvalue));
+                            m_Rw.wFloat(&fvalue);
+						}
+						else {
+                            float fvalue =0.;
+                            m_Rw.wFloat(&fvalue);
+						};
+
+
 					}
 				}
 			}

@@ -385,17 +385,17 @@ bool Meteorological_Data_Functions::OpenSweClimFile() {
 	PrecCoef.resize(12);
 
 	file.getline(&LineRead[0], 200);
-	size_t n = file.gcount();
+	auto n = size_t(file.gcount());
 	LineRead.resize(n);
 	LineRead.resize(200);
 	file.getline(&LineRead[0], 200);
-	n = file.gcount();
+	n = size_t(file.gcount());
 	LineRead.resize(n);
 	for (size_t i = 0; i < 6; i++) {
 
 		LineRead.resize(200);
 		file.getline(&LineRead[0], 200);
-		n = file.gcount();
+		n = size_t(file.gcount());
 		LineRead.resize(n);
 		XX = FUtil::GetFloatVectorFromString(LineRead, 12);
 
@@ -404,7 +404,7 @@ bool Meteorological_Data_Functions::OpenSweClimFile() {
 		//Read(Unit, *) XX
 		LineRead.resize(200);
 		file.getline(&LineRead[0], 200);
-		n = file.gcount();
+		n = size_t(file.gcount());
 		LineRead.resize(n);
 		YY = FUtil::GetFloatVectorFromString(LineRead, 12);
 		//	Read(Unit, *) YY
@@ -417,18 +417,18 @@ bool Meteorological_Data_Functions::OpenSweClimFile() {
 	}
 	LineRead.resize(200);
 	file.getline(&LineRead[0], 200);
-	n = file.gcount();
+	n = size_t(file.gcount());
 	LineRead.resize(n);
 	LineRead.resize(200);
 	file.getline(&LineRead[0], 200);
-	n = file.gcount();
+	n = size_t(file.gcount());
 	LineRead.resize(n);
    		//Read(Unit, *) 	LineRead
 		//Do i=1, 6
 	for (size_t i = 0; i < 6; i++) {
 		LineRead.resize(200);
 		file.getline(&LineRead[0], 200);
-		n = file.gcount();
+		n = size_t(file.gcount());
 		LineRead.resize(n);
 		XX = FUtil::GetFloatVectorFromString(LineRead, 12);
 			if (i - 1 == SweClimRegions) {

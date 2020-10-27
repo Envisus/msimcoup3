@@ -50,7 +50,6 @@ bool DB::Read_DB_DocFile(string file, bool ApplyToCurrentSimFile, bool ExportToC
 
 
 	long long totlength=0;
-	bool prog;
 	if(m_DocFileIn.is_open()) {
 		m_DocFileIn.seekg(0,ios::end);
 		totlength=m_DocFileIn.tellg();
@@ -646,7 +645,7 @@ bool DB::Info_DB_Switches(bool reading, int iv)
 		value = pSw->GetDBIntValue();
 		wInt(&value);
 
-		for(int i=0;i<iv-n_add;i++) {
+		for(int i=0;i<iv-int(n_add);i++) {
 			pSw=(Sw*)m_Sw_Array[index_Sw[i]];
             
             group_psw = pSw->GetGroup();
@@ -761,7 +760,7 @@ vector<Sw*> DB::ReadWrite_DB_Switches(bool reading, int iv) {
 		value = pSw->GetDBIntValue();
 		wInt(&value);
 
-		for (int i = 0; i<iv - n_add; i++) {
+		for (int i = 0; i<iv - int(n_add); i++) {
 			pSw = (Sw*)m_Sw_Array[index_Sw[i]];
             
             group_psw = pSw->GetGroup();
@@ -1694,7 +1693,7 @@ bool DB::Apply_DB_DocFile(vector<Sw*> AppliedSw, vector<Ps*> AppliedPs, vector<T
 	for (size_t i = 0; i<AppliedPs.size(); i++) {
 		Ps* pPs = AppliedPs[i];
 		pPs->SetValue(pPs->GetDBValue());
-		History_Add(pPs, ityp, int(-1), sec, pPs->GetDBValue(), "DB: " + m_DB_key);
+		History_Add(pPs, ityp, int(-1), sec, float(pPs->GetDBValue()), "DB: " + m_DB_key);
 		numchange[1]++;
 	}
 	//Parameter Tables

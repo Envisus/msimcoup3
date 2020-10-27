@@ -93,17 +93,15 @@ bool ModelUtil::SetMRSoilPropConnections(Doc *pDoc)
 	Group = "Soil Hydraulic";
 	Type = "Table Parameters";
 
-	P *pClayContent, *pSandContent, *pProf, *pRepProf, *pProfLayer,
-		*pSaturation, *pTotalCond, *pMatCond, *pLambda, *pAirEntry,
-		*pWilt, *pResidual, *pUDep, *pLDep, *pLBound, *pUBound,
-		*p_nVal, *pGA, *pGN, *pGM, *p_nSR, *p_nSE;
-	Sw *pPedo, *pEquation;
+	P 	*pSaturation, *pTotalCond, *pMatCond, *pLambda, *pAirEntry,
+		*pWilt, *pResidual,  *pGA, *pGN, *pGM, *p_nSR, *p_nSE;
+	Sw  *pEquation;
 
 	pEquation = (Sw*)pDoc->GetPtr(Type, Group, Name);
 	auto Equation = pEquation->GetIntValue();
 
 	Name = "n Tortuosity";
-	p_nVal = (P*)pDoc->GetPtr(Type, Group, Name);
+	auto p_nVal = (P*)pDoc->GetPtr(Type, Group, Name);
 	Name = "m_n Power (SatRel)";
 	p_nSR = (P*)pDoc->GetPtr(Type, Group, Name);
 	Name = "m_n Power (SatEffective)";

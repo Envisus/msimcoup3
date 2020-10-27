@@ -701,7 +701,7 @@ string PGUtil::StringDatumStartEstimate(unsigned int value, unsigned int start)
 	unsigned int range=start-value;
 	int newvalue;
 //	int StMonth;
-	int longSt=start;
+	auto longSt=start;
 	value=value+1;
 	string str=StringDatum(value);
 	string strst=StringDatum(start);

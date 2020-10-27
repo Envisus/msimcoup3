@@ -92,7 +92,7 @@ bool PFCurve::Set_Header(NEWHEADER head, bool Extra)
 
 		m_NewHeaderFile.seekp(0,ios::end);
 		auto endpos=m_NewHeaderFile.tellp();
-		head.RecHeader=endpos;
+		head.RecHeader=size_t(endpos);
 		m_LevelFile.seekp(0,ios::end);
 		endpos=m_LevelFile.tellp();
 		head.RecLayers=size_t(endpos/NSizeLevel);
@@ -570,7 +570,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 		m_AllProfiles[header.RecHeader] = m_ActProfile;
 		if (NewHeaderProfile) {
 			if (!UpdateHeaderFile()) return false;
-			if (SaveNewFormat());
+			SaveNewFormat();
 			if (!SetPF_Pressure(m_IniPressure)) return false;
 			float thick = 0.1f;
 			m_pfcoef_ini.UpperDepth = 0.f;
@@ -587,7 +587,7 @@ bool PFCurve::Export_Import_ActualProfile_CSVFile(size_t keyno, bool Export)
 			}
 		}
 
-		if (SaveNewFormat());
+		SaveNewFormat();
 		m_ActProfile = header;
 
 	}

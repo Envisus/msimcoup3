@@ -987,7 +987,6 @@ bool NewMap::Info_Files(bool reading)
 	F *pF=nullptr;
 	string type,group,name, FileName, IdVar;
 	size_t iv;
-	size_t multilistnum;
 
 
 	if (reading) {
@@ -1642,7 +1641,6 @@ bool NewMap::Info_SumValidation(bool reading)
 				rSize_t(&vst.OutputType);rSize_t(&vst.SumVarType);
 				rString(&vst.Group);rString(&vst.Name);
 				rSize_t(&vst.LocalIndex);
-				float fvalue; double dvalue;
 				rFloat(&vst.ME_mean); rFloat(&vst.RMSE_mean);rFloat(&vst.SimValue);
 				rFloat(&vst.ObsValue);rFloat(&vst.P_Error);
 				rFloat(&vst.A_Error);
@@ -2504,7 +2502,6 @@ bool NewMap::Info_Plottings(bool reading)
 	size_t iChart, iIndex,idoc, nCharts;
 	CHART_TYPES iChartType;
 	size_t iv;
-	SimB *pBase;
 
 	if(reading) {
 		rString(&type);
@@ -3390,7 +3387,7 @@ bool NewMap::CreateMapSvFlexFile(size_t index) {
 	string line;
 	line.resize(2000);
 	sumfile.getline(&line[0], 2000);
-	size_t n=sumfile.gcount();
+	size_t n=size_t(sumfile.gcount());
 	line.resize(n);
 	size_t ipos;
 	vector<string> header;
@@ -3422,7 +3419,7 @@ bool NewMap::CreateMapSvFlexFile(size_t index) {
 	while (sumfile.good()) {
 		sumfile.getline(&line[0], 2000);
 		auto k=sumfile.gcount();
-		line.resize(k);
+		line.resize(size_t(k));
 		vector<float> values;
 
 		ipos = line.find(';'); if (ipos == string::npos) ipos = line.find(',');

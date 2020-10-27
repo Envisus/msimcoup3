@@ -95,14 +95,14 @@ public:
 	}
 
 	double operator() (size_t ipar, double Theta)  noexcept {
-		double sex, psix, psid, psil, se, func;
+		double func;
 
 		if (Theta >= m[ipar].Saturation)
 			func = max(-500., -10. * (Theta - m[ipar].Saturation));
 		else if (Theta <= m[ipar].Wilting && Theta <= m[ipar].UpperBTheta && m[ipar].UpperBPsi <= 150000.)
 			func = pow(10., 4.2 + 2.8 * (1. - Theta / m[ipar].Wilting));
 		else if (Theta <= m[ipar].UpperBTheta || (Theta <= m[ipar].ResWater && m[ipar].UpperBPsi <= 150000.)) {
-			psid = min(1., max(0.001, (m[ipar].UpperBTheta - Theta) / (m[ipar].UpperBTheta - m[ipar].Wilting)));
+			auto psid = min(1., max(0.001, (m[ipar].UpperBTheta - Theta) / (m[ipar].UpperBTheta - m[ipar].Wilting)));
 			func = pow(10., log10(m[ipar].UpperBPsi) + psid * log10(15000. / m[ipar].UpperBPsi));
 		}
 		else

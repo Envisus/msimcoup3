@@ -210,7 +210,7 @@ function<double(double)> FunctFactory::Set_D1_Functor() {
 		case MyFunc::ABIOTIC_TEMP_Q10_RESPONSE:
 			if(m_Ps_Par.size()==2) 
 				return Q10(m_Ps_Par[0], m_Ps_Par[1]);
-			breal:
+			break;
 		case MyFunc::ABIOTIC_TEMP_Q10THRESHOLD_RESPONSE:
 			if (m_Ps_Par.size() == 3)
 				return Q10(m_Ps_Par[0], m_Ps_Par[1], m_Ps_Par[2]);
@@ -714,12 +714,6 @@ function<double(double, double, double, double, double,double)> FunctFactory::Se
 function<double(bool)> FunctFactory::Set_boolBlank_Functor() {
 
 	if (m_Prop.FunctorInitOption != string::npos) {
-		switch (m_Prop.FuncName) {
-
-		default:;
-	}
-
-
 
 	}
 	else {
@@ -734,35 +728,12 @@ function<double(bool)> FunctFactory::Set_boolBlank_Functor() {
 	return nullptr;
 };
 function<double(bool, double)> FunctFactory::Set_boolD1_Functor() {
-
-	if (m_Prop.FunctorInitOption != string::npos) {
-		switch (m_Prop.FuncName) {
-			default:;
-		}
-
-
-
-	}
-	else {
-		switch (m_Prop.FuncName) {
-
-		default:;
-		}
-	}
 	return nullptr;
 };
 function<double(bool, double, double)> FunctFactory::Set_boolD2_Functor() {
-	switch (m_Prop.FuncName) {
-	default:;
-	}
 	return nullptr;
 }
 function<double(bool, double, double, double)> FunctFactory::Set_boolD3_Functor() {
-	switch (m_Prop.FuncName) {
-
-
-	default:;
-	}
 	return nullptr;
 }
 function<double(bool, double, double, double, double)> FunctFactory::Set_boolD4_Functor() {
@@ -770,27 +741,13 @@ function<double(bool, double, double, double, double)> FunctFactory::Set_boolD4_
 	default:;
 	}*/
 	if (m_Prop.FunctorInitOption != string::npos) {
-		switch (m_Prop.FuncName) {
-			default:;
-		}
-
-
 
 	}
 	else {
-		switch (m_Prop.FuncName) {
-
-		default:;
-		}
 	}
 	return nullptr;
 }
 function<double(bool, double, double, double, double, double)> FunctFactory::Set_boolD5_Functor() {
-
-	switch (m_Prop.FuncName) {
-
-	default:;
-	}
 
 	return nullptr;
 }
@@ -800,13 +757,6 @@ function<double(bool, double, double, double, double, double)> FunctFactory::Set
 function<vector<double>()> FunctFactory::SetVector_Blank_Functor() {
 
 	if (m_Prop.FunctorInitOption != string::npos) {
-		switch (m_Prop.FuncName) {
-
-		default:;
-		}
-
-
-
 	}
 	else {
 		switch (m_Prop.FuncName) {
@@ -814,7 +764,6 @@ function<vector<double>()> FunctFactory::SetVector_Blank_Functor() {
 		case::MyFunc::HEATCAPACITY_SOLID:
 			return HeatCapacitySolid(m_P_Par[0], m_P_Par[1]);
 
-		default:;
 		}
 	}
 	return nullptr;
@@ -822,98 +771,36 @@ function<vector<double>()> FunctFactory::SetVector_Blank_Functor() {
 function<vector<double>(bool)> FunctFactory::SetVector_boolBlank_Functor() {
 
 	if (m_Prop.FunctorInitOption != string::npos) {
-		switch (m_Prop.FuncName) {
-
-		default:;
-		}
-
-
-
 	}
 	else {
 		switch (m_Prop.FuncName) {
-
-		case::MyFunc::DRYBULKDENSITY:
-			return DryBulkDensity(m_P_Par[0], m_P_Par[1], m_P_Par[2], m_P_Par[3], m_P_Par[4], m_P_Par[5]);
-
-		default:;
+		    case::MyFunc::DRYBULKDENSITY:
+			    return DryBulkDensity(m_P_Par[0], m_P_Par[1], m_P_Par[2], m_P_Par[3], m_P_Par[4], m_P_Par[5]);
 		}
 	}
 	return nullptr;
 };
 function<vector<double>(bool, double)> FunctFactory::SetVector_boolD1_Functor() {
-
-	if (m_Prop.FunctorInitOption != string::npos) {
-		switch (m_Prop.FuncName) {
-		default:;
-		}
-
-
-
-	}
-	else {
-		switch (m_Prop.FuncName) {
-
-		default:;
-		}
-	}
 	return nullptr;
 };
 function<vector<double>(bool, double, double)> FunctFactory::SetVector_boolD2_Functor() {
-	switch (m_Prop.FuncName) {
-	default:;
-	}
 	return nullptr;
 }
 function<vector<double>(bool, double, double, double)> FunctFactory::SetVector_boolD3_Functor() {
-	switch (m_Prop.FuncName) {
-
-
-	default:;
-	}
 	return nullptr;
 }
 function<vector<double>(bool, double, double, double, double)> FunctFactory::SetVector_boolD4_Functor() {
-	/*switch (m_Prop.FuncName) {
-	default:;
-	}*/
-	if (m_Prop.FunctorInitOption != string::npos) {
-		switch (m_Prop.FuncName) {
-		default:;
-		}
 
-
-
-	}
-	else {
-		switch (m_Prop.FuncName) {
-
-		default:;
-		}
-	}
 	return nullptr;
 }
 function<vector<double>(bool, double, double, double, double, double)> FunctFactory::SetVector_boolD5_Functor() {
-	switch (m_Prop.FuncName) {
-
-	default:;
-	}
 	return nullptr;
 }
 
 function<void(vector<double>*)>  FunctFactory::SetVectorPointer_D1_Functor() {
-	switch (m_Prop.FuncName) {
-
-
-	default:;
-	}
 	return nullptr;
 }
 function<void(vector<double>*, vector<double>*)>  FunctFactory::SetVectorPointer_D2_Functor() {
-	switch (m_Prop.FuncName) {
-
-	default:;
-	}
 	return nullptr;
 }
 function<void(vector<double>*, vector<double>*, vector<double>*)>  FunctFactory::SetVectorPointer_D3_Functor() {
@@ -944,19 +831,9 @@ function<void(vector<double>*, vector<double>*, vector<double>*)>  FunctFactory:
 	return nullptr;
 };
 function<void(vector<double>*, vector<double>*, vector<double>*, vector<double>*)> FunctFactory::SetVectorPointer_D4_Functor() {
-	switch (m_Prop.FuncName) {
-
-
-
-	default:;
-	}
 	return nullptr;
 };
 function<void(vector<double>*, vector<double>*, vector<double>*, vector<double>*, vector<double>*)> FunctFactory::SetVectorPointer_D5_Functor() {
-	switch (m_Prop.FuncName) {
-
-	default:;
-	}
 	return nullptr;
 };
 
@@ -996,19 +873,14 @@ function<double(double, double)> FunctFactory::Set_D2_PhysFunctor() {
 	return Physf(m_Prop.PhysFuncName);
 }
 function<double(double, double, double)> FunctFactory::Set_D3_PhysFunctor() {
-	switch (m_Prop.FuncName) {
 
-
-
-	}
 	return Physf(m_Prop.PhysFuncName);
 
 }
 function<double(double, double, double, double)> FunctFactory::Set_D4_PhysFunctor() {
 	switch (m_Prop.PhysFuncName) {
-	case FUNC_CHOICE::RES_AIR_MOM_HEAT:
+	case FUNC_CHOICE::RES_AIR_MOM_HEAT :
 		return Physf(m_Prop.PhysFuncName);
-		default:;
 	}
 	return Physf(m_Prop.PhysFuncName);
 
@@ -1618,19 +1490,9 @@ function<double(bool, size_t)> FunctFactory::Set_boolBlank_TableFunctor() {
 	return nullptr;
 };
 function<double(bool, size_t, double)> FunctFactory::Set_boolD1_TableFunctor() {
-	switch (m_Prop.FuncName) {
-	
-	
-	default:;
-	}
-
 	return nullptr;
 };
 function<double(bool, size_t, double, double)> FunctFactory::Set_boolD2_TableFunctor() {
-	switch (m_Prop.FuncName) {
-	
-
-	}
 	return nullptr;
 }
 function<double(bool, size_t, double, double, double)> FunctFactory::Set_boolD3_TableFunctor() {
@@ -1647,13 +1509,6 @@ function<double(bool, size_t, double, double, double)> FunctFactory::Set_boolD3_
 		return LitterFallYear(m_P_Par[0], m_P_Par[1], m_P_Par[2], m_P_Par[3], m_P_Par[4], m_P_Par[5], m_P_Par[6]);
 	case::MyFunc::COARSEROOT_LITTERFALL_STATIC:
 		return LitterFallYear(m_P_Par[0], m_P_Par[1], m_P_Par[2]);
-
-	default:;
-
-
-
-
-
 	}
 
 

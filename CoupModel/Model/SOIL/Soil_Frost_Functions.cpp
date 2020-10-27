@@ -28,7 +28,6 @@ bool Soil_Frost_Functions::Def()
 	string funcname;
 
 	FunctorProp functorprop;
-	P* pP;
 	vector<P*> p_vec;
 	vector<Ps*> ps_vec;
 	ps_vec.clear();
@@ -148,9 +147,6 @@ bool Soil_Frost_Functions::Def()
 return FunctionDef();
 }
 bool Soil_Frost_Functions::FunctionDef() {
-	Func *pFunc;
-
-
 	return true;
 }
 
@@ -222,9 +218,9 @@ vector<double> Soil_Frost_Functions::Refreezing() {
 	double Heattrans;
 
 	if (FrFlowDomain>=1) {
-//!C     Old equation substituted 951222 by PEJ Unit of alphaht (J/dayøC)
+//!C     Old equation substituted 951222 by PEJ Unit of alphaht (J/dayï¿½C)
 //!C         heattrans = alphaht*(-temp[i])   
-//!C     New equation below Unit of alphaht (W/møC)
+//!C     New equation below Unit of alphaht (W/mï¿½C)
 		//Do i=1, Ncalc
 		for(size_t i=0; i<NCalc; i++) {
 		 if(p_Heat->Temp[i]<0.) {

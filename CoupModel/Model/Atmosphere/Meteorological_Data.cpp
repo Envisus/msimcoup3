@@ -227,7 +227,7 @@ void Meteorological_Data::Flux()
 	}
 	if (SweClimScenarious_Sw(SweClimScenarious) > SweClimScenarious_Sw::No) TAir = NewTemp(TAir, m_pModelInfo->JDayNum);
 
-	//! rullande dygnsmedelvärde
+	//! rullande dygnsmedelvï¿½rde
 	TAirDailyMean = f_MeanDailyTemp(TAir);
 	//! Markytetemperatur=Lufttemperatur
 	if (SoilEvap <= 0 || m_pModelStructure->WaterEq == 0)
@@ -241,12 +241,12 @@ void Meteorological_Data::Flux()
 	if (TrafficInput_Sw(TrafficInput) == TrafficInput_Sw::ON)
 		TrafficIntensity = GetEcoDat(&m_PGPOS_Meteor[TrafficIpos.ivar], TrafficIpos);
 
-	//! Drivdata för vattenekvationen
+	//! Drivdata fï¿½r vattenekvationen
 	if (TAirGlobRad_Sw(TAirGlobRad) == TAirGlobRad_Sw::NOT_USED && m_pModelStructure->OnlyNC > 0)
 		return;
 	else if (m_pModelStructure->WaterEq > 0) {
 
-		//	! Nederbörd
+		//	! Nederbï¿½rd
 		if (PrecInput_Sw(PrecInput) == PrecInput_Sw::PARAMETERS) {
 			PrecMeas = f_pgen(m_pModelInfo->JDayNum);
 			PrecCorr = PrecMeas;
@@ -270,13 +270,13 @@ void Meteorological_Data::Flux()
 		}
 
 
-		//! Ångtryck
+		//! ï¿½ngtryck
 
 		if (VapourAirInput_Sw(VapourAirInput) == VapourAirInput_Sw::RELATIVEHUMIDITY || (VapourAirIpos.ivar == 0 && WetBulbIpos.ivar == 0))
 			VapourPAir = f_avp_rh(TAir, HumRel);
 		else  if (VapourAirInput_Sw(VapourAirInput) >= VapourAirInput_Sw::PRESSURE_PG_FILE_FIRST && VapourAirIpos.ivar > 0) {
 			if (VapourAirInput_Sw(VapourAirInput) == VapourAirInput_Sw::VPD_PG_FILE_FIRST) {
-				float Def = GetEcoDat(&m_PGPOS_Meteor[VapourAirIpos.ivar], VapourAirIpos);
+				auto Def = GetEcoDat(&m_PGPOS_Meteor[VapourAirIpos.ivar], VapourAirIpos);
 				VapourPAir = f_svp(TAir) - Def;
 			}
 			else
@@ -332,7 +332,7 @@ void Meteorological_Data::Flux()
 			MISSCLOUD = true;
 		}
 
-		//! Nettostrålning
+		//! Nettostrï¿½lning
 		if (RadNetInput_Sw(RadNetInput) >= RadNetInput_Sw::PG_FILE_FIRST) {
 			RadNetTot = GetEcoDat(&m_PGPOS_Meteor[RadNetIpos.ivar], RadNetIpos);
 			if (m_pModelStructure->HeatFluxUnit == 1) RadNetTot = RadNetTot * m_pModelInfo->SecPerDay;
@@ -346,7 +346,7 @@ void Meteorological_Data::Flux()
 		else
 			MISSRNT = true;
 
-		//! Långvågig strålning
+		//! Lï¿½ngvï¿½gig strï¿½lning
 
 		if (RadInLongInput_Sw(RadInLongInput) == RadInLongInput_Sw::PG_FILE_FIRST && RadInLongIpos.ivar > 0) {
 			RadInLong = GetEcoDat(&m_PGPOS_Meteor[RadInLongIpos.ivar], RadInLongIpos);
@@ -360,7 +360,7 @@ void Meteorological_Data::Flux()
 			MISSRIL = true;
 
 
-		//! Kortvågig strålning
+		//! Kortvï¿½gig strï¿½lning
 
 		if (RadGlobInput_Sw(RadGlobInput) >= RadGlobInput_Sw::PG_FILE_FIRST && RadGlobIpos.ivar > 0) {
 			RadInShort = GetEcoDat(&m_PGPOS_Meteor[RadGlobIpos.ivar], RadGlobIpos);
@@ -378,7 +378,7 @@ void Meteorological_Data::Flux()
 			MISSRIS = true;
 
 
-		// Horisontellt vatteninflöde
+		// Horisontellt vatteninflï¿½de
 
 		if (m_pModelStructure->LateralInput >= 1 && LateralIpos.ivar != string::npos && LateralIpos.ivar > 0) {
 

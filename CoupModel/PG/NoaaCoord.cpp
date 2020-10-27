@@ -438,14 +438,14 @@ CPG* NoaaCoord::CreateNewSpatialCorrelationFile(CPG *pPG)
 
 						stat.VarUsedRep = indexRep;
 						stat.nSub = Num_Substituted - PriorSubstituted;
-						stat.R2 = Lin[ireg]->getCoefficient();
+						stat.R2 = float(Lin[ireg]->getCoefficient());
 						if (WithoutIntercept) {
 							stat.A0 = 0;
-							stat.A1 = Lin[ireg]->getSlope();
+							stat.A1 = float(Lin[ireg]->getSlope());
 						}
 						else {
-							stat.A0 = Lin[ireg]->getIntercept();
-							stat.A1 = Lin[ireg]->getSlope();
+							stat.A0 = float(Lin[ireg]->getIntercept());
+							stat.A1 = float(Lin[ireg]->getSlope());
 						}
 						m_statsub.push_back(stat);
 					}
@@ -588,14 +588,14 @@ CPG* NoaaCoord::CreateNewSpatialCorrelationFile(CPG *pPG)
 
 						stat.VarUsedRep = indexRep;
 						stat.nSub = Num_Substituted - PriorSubstituted;
-						stat.R2 = Lin[ireg]->getCoefficient();
+						stat.R2 = float(Lin[ireg]->getCoefficient());
 						if (WithoutIntercept) {
 							stat.A0 = 0;
-							stat.A1 = Lin[ireg]->getSlope();
+							stat.A1 = float(Lin[ireg]->getSlope());
 						}
 						else {
-							stat.A0 = Lin[ireg]->getIntercept();
-							stat.A1 = Lin[ireg]->getSlope();
+							stat.A0 = float(Lin[ireg]->getIntercept());
+							stat.A1 = float(Lin[ireg]->getSlope());
 						}
 						m_statsub.push_back(stat);
 					}
@@ -759,7 +759,7 @@ CPG* NoaaCoord::CreateNewSinglePosFile(double Lat1, double Long1, CPG *pPGSource
 				int time=m_pPGSource->GetLongTime(i+1);
 				pPG_Dest->SetLongTime(i+1, time );
 			}			
-			double newvalue= NewInterpolatedValue(j, i+1);
+			float newvalue= NewInterpolatedValue(j, i+1);
 			if(newvalue>MISSING) {
 				if(newvalue>fmax) fmax=newvalue;
 				if(newvalue<fmin) fmin=newvalue;
@@ -824,7 +824,6 @@ CPG* NoaaCoord::CreateNewInterPolatedFile(float MaxDaysThreshold, CPG *pPGSource
 
 	bool fail=true;
 	m_pPGSource->CloseFile();
-	size_t n;
 	bool equalfilename=false;
 	if(m_pPGSource->GetFileName()==m_DestFileName) {
 		equalfilename=true;
@@ -985,7 +984,7 @@ CPG* NoaaCoord::CreateNewGridFile(double LatNorth, double LatSouth, double LongE
 						int time=m_pPGSource->GetLongTime(i+1);
 						pPG_Dest->SetLongTime(i+1, time );
 					}
-					double newvalue= NewInterpolatedValue(j, i+1);
+					float newvalue= NewInterpolatedValue(j, i+1);
 					if(newvalue>MISSING) {
 						if(newvalue>fmax) fmax=newvalue;
 						if(newvalue<fmin) fmin=newvalue;

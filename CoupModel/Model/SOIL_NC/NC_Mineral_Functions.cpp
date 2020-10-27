@@ -209,7 +209,7 @@ bool NC_Mineral_Functions::Def()
 		plotpar.Y_Label = "Nitrification Rate "; plotpar.Y_Label += p_ModelInfo->GetUnitString(MASSFLOW_UNIT, true);
 		plotpar.Num_Of_Curves = 3;
 		plotpar.Num_Of_X = 2;
-		plotpar.X2_Vec={ .1,10.,20. };
+		plotpar.X2_Vec={ .1f,10.f,20.f };
 		plotpar.LegendsVec = { "Nitrate .1 ", "Nitrate 10 ","Nitrate 20 " };
 		for(size_t i=0; i<3; ++i) plotpar.LegendsVec[i]+= p_ModelInfo->GetUnitString(MASS_UNIT, true);
 		ps_vec.clear();
